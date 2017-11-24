@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ScheduleManagement.Logic.Model
 {
-    class Tutor
+    public class Tutor
     {
         [Key, Column(Order = 0)]
         public int ID { get; set; }

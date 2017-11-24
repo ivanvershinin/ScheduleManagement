@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace ScheduleManagement.Logic.Model
 {
-    class TutorCabinet
+    public class TutorCabinet
     {
         [Key, Column(Order = 0)]
         public int CabinetId { get; set; }
         [Required, Key, Column(Order = 1), DatabaseGenerated(DatabaseGeneratedOption.None)]
-        public DateTime StartTime { get; set; }
+        public int LessonOrder { get; set; }
 
         public School School { get; set; }
         public Tutor Tutor { get; set; }
 
-        public DateTime EndTime { get; set; }
+        
         public bool Available { get; set; }
     }
 }
