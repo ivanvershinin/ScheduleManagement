@@ -18,6 +18,7 @@ namespace ScheduleManagement.Logic.Model
         public bool HasWhiteBoard { get; set; }
         public int PlacesAmount { get; set; }
 
+        public virtual School School { get; set; }
         public virtual ICollection<TutorCabinet> TutorCabinets { get; set; }
     }
 }

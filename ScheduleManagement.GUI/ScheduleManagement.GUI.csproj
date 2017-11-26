@@ -140,6 +140,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ScheduleManagement.Logic\ScheduleManagement.Logic.csproj">
+      <Project>{dd63bef2-4c18-49c6-b06e-c8a8f44c8bca}</Project>
+      <Name>ScheduleManagement.Logic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

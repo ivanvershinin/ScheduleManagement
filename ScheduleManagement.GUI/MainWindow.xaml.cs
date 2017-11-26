@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduleManagement.GUI.Pages;
+using ScheduleManagement.Logic;
 
 namespace ScheduleManagement.GUI
 {
@@ -26,8 +27,7 @@ namespace ScheduleManagement.GUI
         public MainWindow()
         {
             InitializeComponent();
-            Frame.Navigate(startingPage);
-
+            Frame.Navigate(startingPage);           
         }
     }
 }

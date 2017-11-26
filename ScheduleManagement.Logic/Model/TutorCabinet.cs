@@ -14,11 +14,11 @@ namespace ScheduleManagement.Logic.Model
         public int CabinetId { get; set; }
         [Required, Key, Column(Order = 1), DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int LessonOrder { get; set; }
-
+        [Required, Key, Column(Order = 2), DatabaseGenerated(DatabaseGeneratedOption.None)]
+        public DateTime Date { get; set; }
+        
         public Cabinet Cabinet { get; set; }
         public Tutor Tutor { get; set; }
-
         
-        public bool Available { get; set; }
     }
 }

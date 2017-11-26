@@ -7,7 +7,7 @@ using ScheduleManagement.Logic.Repository;
 
 namespace ScheduleManagement.Logic
 {
-    class UnitOfWork : IDisposable
+    public class UnitOfWork : IDisposable
     {
         Context _context = new Context();
 

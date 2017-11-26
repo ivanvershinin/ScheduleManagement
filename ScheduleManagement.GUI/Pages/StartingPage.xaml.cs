@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.Logic;
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -23,6 +24,8 @@ namespace ScheduleManagement.GUI.Pages
         public StartingPage()
         {
             InitializeComponent();
+            //Context _context = new Context();
+            //_context.Cabinets.FirstOrDefault(t => t.ID == 1);
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)

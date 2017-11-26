@@ -7,7 +7,7 @@ using ScheduleManagement.Logic.Model;
 
 namespace ScheduleManagement.Logic.Repository
 {
-    class TutorRepository : Repository<Tutor>
+    public class TutorRepository : Repository<Tutor>
     {
         public TutorRepository(Context context) : base(context)
         {

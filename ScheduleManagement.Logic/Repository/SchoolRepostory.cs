@@ -7,7 +7,7 @@ using ScheduleManagement.Logic.Model;
 
 namespace ScheduleManagement.Logic.Repository
 {
-    class SchoolRepostory : Repository<School>
+    public class SchoolRepostory : Repository<School>
     {
         public SchoolRepostory(Context context) : base(context)
         {
