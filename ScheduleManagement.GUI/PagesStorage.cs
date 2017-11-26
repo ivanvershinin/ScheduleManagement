@@ -7,7 +7,7 @@ using ScheduleManagement.GUI.Pages;
 
 namespace ScheduleManagement.GUI
 {
-    class PagesStorage
+    public class PagesStorage
     {
         private static PagesStorage _default;
 

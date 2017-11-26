@@ -23,14 +23,14 @@
                     <RowDefinition/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <Label Margin="10, 5">Введите email:</Label>
+                <Label Margin="10, 0">Введите email:</Label>
                 <TextBox Margin="10"  Name="TBEmail"  Grid.Row="1"/>
-                <Label Margin="10, 5"  Grid.Row="2">Введите пароль:</Label>
+                <Label Margin="10, 0"  Grid.Row="2">Введите пароль:</Label>
                 <PasswordBox  Margin="10" Name="PBPassword"  Grid.Row="3"/>
-                <Button Margin="10" Content="Войти" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4"/>
+                <Button Margin="10" Content="Войти" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4" Click="LogIn_Click"/>
             </Grid>
         </GroupBox>
-        <Button  Margin="10" Height="30" Content="Вернуться" Name="Return" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White"/>
+        <Button  Margin="10" Height="30" Content="Вернуться" Name="Return" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click"/>
 
     </Grid>
 </Page>

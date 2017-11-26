@@ -35,10 +35,10 @@
                 <PasswordBox Name="PBPassword" Grid.Row="1" Grid.Column="1" Margin="10"/>
                 <TextBox Name="TBName" Grid.Row="2" Grid.Column="1" Margin="10"/>
                 <TextBox Name="TBSurname" Grid.Row="3" Grid.Column="1" Margin="10"/>
-                <Button Grid.Row="4" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5">Зарегистрироваться</Button>
+                <Button Grid.Row="4" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Return_Click">Зарегистрироваться</Button>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10" Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White">Вернуться</Button>
+        <Button Grid.Row="2" Margin="10" Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click">Вернуться</Button>
 
     </Grid>
 </Page>

@@ -24,5 +24,22 @@ namespace ScheduleManagement.GUI.Pages
         {
             InitializeComponent();
         }
+
+        private void ViewCabinets_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+
+        }
+
+        private void ViewSchedule_Click(object sender, RoutedEventArgs e)
+        {
+            //пока не знаю чокак делать
+        }
+
+        private void Return_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+
+        }
     }
 }
