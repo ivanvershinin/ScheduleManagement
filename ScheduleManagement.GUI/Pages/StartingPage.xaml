@@ -18,7 +18,7 @@
         </Grid.RowDefinitions>
         <Button Margin="15" Content="Войти в систему" Name="Login" Click="Login_Click"/>
         <Button Grid.Row="1" Margin="15" Content="Просмотреть расписания" Name="View" Click="View_Click"/>
-        <Button Grid.Row="2" Margin="15" Content="Зарегестрироваться" Name="Registration" Click="Registration_Click"/>
+        <Button Grid.Row="2" Margin="15" Content="Зарегистрироваться" Name="Registration" Click="Registration_Click"/>
 
     </Grid>
 </Page>

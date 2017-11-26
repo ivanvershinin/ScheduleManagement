@@ -23,10 +23,10 @@
                 </Grid.RowDefinitions>
                 <ListBox Margin="10"/>
                 <CheckBox Margin="10,3" Grid.Row="1">Забронировать на каждую неделю</CheckBox>
-                <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5">Забронировать</Button>
+                <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Bind" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Bind_Click">Забронировать</Button>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10,5" Name="ReturnToAccount" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White">Вернуться к аккаунту</Button>
+        <Button Grid.Row="2" Margin="10,5" Name="ReturnToAccount" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="ReturnToAccount_Click">Вернуться к аккаунту</Button>
 
 
     </Grid>

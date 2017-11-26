@@ -24,5 +24,16 @@ namespace ScheduleManagement.GUI.Pages
         {
             InitializeComponent();
         }
+
+        private void Bind_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void ReturnToAccount_Click(object sender, RoutedEventArgs e)
+        {
+            NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
+
+        }
     }
 }

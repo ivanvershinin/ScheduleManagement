@@ -27,16 +27,18 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Login_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(PagesStorage.Default.GetLoginPage());
 
         }
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-
+           //идк нужно или нет !!
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(PagesStorage.Default.GetRegistrationPage());
 
         }
     }
