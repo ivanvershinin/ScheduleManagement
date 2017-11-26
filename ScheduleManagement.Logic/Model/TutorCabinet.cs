@@ -15,7 +15,7 @@ namespace ScheduleManagement.Logic.Model
         [Required, Key, Column(Order = 1), DatabaseGenerated(DatabaseGeneratedOption.None)]
         public int LessonOrder { get; set; }
 
-        public School School { get; set; }
+        public Cabinet Cabinet { get; set; }
         public Tutor Tutor { get; set; }
 
         

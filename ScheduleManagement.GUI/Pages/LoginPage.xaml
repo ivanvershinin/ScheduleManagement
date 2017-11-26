@@ -5,10 +5,32 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScheduleManagement.GUI.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="300" d:DesignWidth="250"
       Title="LoginPage">
 
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="1*"/>
+ 
+        </Grid.RowDefinitions>
+        <GroupBox BorderBrush="#FF3C4A58" >
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Label Margin="10, 5">Введите email:</Label>
+                <TextBox Margin="10"  Name="TBEmail"  Grid.Row="1"/>
+                <Label Margin="10, 5"  Grid.Row="2">Введите пароль:</Label>
+                <PasswordBox  Margin="10" Name="PBPassword"  Grid.Row="3"/>
+                <Button Margin="10" Content="Войти" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4"/>
+            </Grid>
+        </GroupBox>
+        <Button  Margin="10" Height="30" Content="Вернуться" Name="Return" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White"/>
+
     </Grid>
 </Page>

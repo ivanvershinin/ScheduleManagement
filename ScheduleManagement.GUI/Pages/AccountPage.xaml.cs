@@ -16,28 +16,13 @@ using System.Windows.Shapes;
 namespace ScheduleManagement.GUI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для StartingPage.xaml
+    /// Логика взаимодействия для AccountPage.xaml
     /// </summary>
-    public partial class StartingPage : Page
+    public partial class AccountPage : Page
     {
-        public StartingPage()
+        public AccountPage()
         {
             InitializeComponent();
-        }
-
-        private void Login_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void View_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Registration_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }

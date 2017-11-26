@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.GUI.Pages;
 
 namespace ScheduleManagement.GUI
 {
@@ -20,9 +21,13 @@ namespace ScheduleManagement.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
+        StartingPage startingPage = PagesStorage.Default.GetStartingPage();
+
         public MainWindow()
         {
             InitializeComponent();
+            Frame.Navigate(startingPage);
+
         }
     }
 }
