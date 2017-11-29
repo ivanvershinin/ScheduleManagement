@@ -32,12 +32,10 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
+                unitOfWork.TRs.Message += ShowMessage;
+                //алгоритм нерабочий, впускает при любом пользователе и пароле, ввероятно проблема в том, что методы чек емэил и чек пасворд возвращают что-то Энтитишное, но не нулл даже при неудачном поиске
                 if (unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password))
-                    NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
-                else
-                {
-                    //.........................................ВРЕМЯ СООБЩЕНИЙ ОБ ОШИБКАХ И ДЕЛЕГАТА ДЛЯ НИХ НО МНЕ ЛЕНЬ
-                }
+                    NavigationService.Navigate(PagesStorage.Default.GetAccountPage());               
             }
         }
 

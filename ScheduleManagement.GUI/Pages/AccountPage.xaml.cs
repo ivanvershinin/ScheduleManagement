@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.Logic;
+using ScheduleManagement.Logic.Repository;
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -23,6 +25,12 @@ namespace ScheduleManagement.GUI.Pages
         public AccountPage()
         {
             InitializeComponent();
+            using (var unitOfWork = new UnitOfWork())
+            {
+                CMBSchool.ItemsSource = unitOfWork.SRs.Items;
+                //проблема с выбором номера урока, у нас нет всего набора отдельно, надо либо писать запрос либо хардкодить
+                unitOfWork.Complete();
+            }
         }
 
         private void ViewCabinets_Click(object sender, RoutedEventArgs e)

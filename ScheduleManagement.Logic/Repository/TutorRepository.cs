@@ -10,12 +10,13 @@ namespace ScheduleManagement.Logic.Repository
 {
     public class TutorRepository : Repository<Tutor>, ITutorRepository
     {
+        public event Action<string> Message;
         public TutorRepository(Context context) : base(context)
         {
             Items = context.Tutors.ToList();
         }
 
-        string message;
+        
         Authorization authorization = new Authorization();
 
 
@@ -44,14 +45,14 @@ namespace ScheduleManagement.Logic.Repository
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password) || String.IsNullOrWhiteSpace(name) || String.IsNullOrWhiteSpace(surname))
             {
-                message = "Введите данные";
+                Message?.Invoke("Введите данные");
                 return false;
             }
             else
             {
                 if (CheckEmail(email) != null)
                 {
-                    message = "Пользователь с таким email уже зарегистрирован в системе";
+                    Message?.Invoke("Пользователь с таким email уже зарегистрирован в системе");
                     return false;
 
                 }
@@ -78,21 +79,21 @@ namespace ScheduleManagement.Logic.Repository
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
             {
-                message = "Введите данные";
+                Message?.Invoke("Введите данные");
                 return false;
             }
             else
             {
                 if (CheckEmail(email)==null)
                 {
-                  message = "Почта не зарегистрирована в системе";
+                    Message?.Invoke("Почта не зарегистрирована в системе");
                   return false;
                 }
                 else
                 {
                     if(CheckPassword(email, password)==null)
                     {
-                        message = "Введен неверный пароль";
+                        Message?.Invoke("Введен неверный пароль");
                         return false;
                     }
                     else
