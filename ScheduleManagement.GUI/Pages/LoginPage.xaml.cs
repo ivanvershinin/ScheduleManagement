@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.Logic;
+using ScheduleManagement.Logic.Repository;
+
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -27,8 +30,15 @@ namespace ScheduleManagement.GUI.Pages
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            if (true) //прописать логику для метода в репозитории??
-                NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
+            using (var unitOfWork = new UnitOfWork())
+            {
+                if (unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password))
+                    NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
+                else
+                {
+                    //.........................................ВРЕМЯ СООБЩЕНИЙ ОБ ОШИБКАХ И ДЕЛЕГАТА ДЛЯ НИХ НО МНЕ ЛЕНЬ
+                }
+            }
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)

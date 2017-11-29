@@ -12,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.Logic;
+using ScheduleManagement.Logic.Repository;
+
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -34,8 +37,16 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Regist_Click(object sender, RoutedEventArgs e)
         {
-            if (true) //прописать логику в методе в репозитории 
-            NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+            using (var unitOfWork = new UnitOfWork())
+            {
+                if (unitOfWork.TRs.CheckRegistration(TBName.Text, TBSurname.Text, TBEmail.Text, PBPassword.Password))
+                        NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+                    else
+                    {
+                    //.........................................ВРЕМЯ СООБЩЕНИЙ ОБ ОШИБКАХ И ДЕЛЕГАТА ДЛЯ НИХ НО МНЕ ЛЕНЬ
+                     }
+            }
+
 
         }
     }
