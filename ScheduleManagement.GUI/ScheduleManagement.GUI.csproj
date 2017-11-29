@@ -96,6 +96,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Pages\ViewSchedulePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="PagesStorage.cs" />
@@ -113,6 +117,9 @@
     </Compile>
     <Compile Include="Pages\ViewPage.xaml.cs">
       <DependentUpon>ViewPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ViewSchedulePage.xaml.cs">
+      <DependentUpon>ViewSchedulePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

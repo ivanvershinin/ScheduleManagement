@@ -12,36 +12,24 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using ScheduleManagement.Logic;
-using ScheduleManagement.Logic.Repository;
 
 namespace ScheduleManagement.GUI.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для ViewPage.xaml
+    /// Логика взаимодействия для ViewSchedule.xaml
     /// </summary>
-    public partial class ViewPage : Page
+    public partial class ViewSchedulePage : Page
     {
-        public ViewPage()
+        public ViewSchedulePage()
         {
             InitializeComponent();
-            using (var unitOfWork = new UnitOfWork())
-            {
-                LBShow.ItemsSource = unitOfWork.CRs.Items;
-                unitOfWork.Complete();
-            }
         }
-
-        private void Bind_Click(object sender, RoutedEventArgs e)
-        {
-            //запрос + нужна ли проверка чтобы один препод 2 ряда не привязывал кабинет !!!1
-        }
-
         private void ReturnToAccount_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
-            //конец
+            //все хорошо и пусто
 
         }
+
     }
 }

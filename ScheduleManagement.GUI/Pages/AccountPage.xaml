@@ -5,12 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ScheduleManagement.GUI.Pages"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="400" d:DesignWidth="300"
       Title="AccountPage">
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.75*"/>
+            <RowDefinition Height="2.5*"/>
             <RowDefinition/>
             <RowDefinition Height="0.5*"/>
 
@@ -20,8 +20,10 @@
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
-                    <RowDefinition />
                     <RowDefinition/>
+                    <RowDefinition Height="2.5*"/>
+                    <RowDefinition/>
+
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -31,12 +33,31 @@
                 <Label Grid.Row="2">Выберите дату:</Label>
                 <Label >Выберите школу:</Label>
                 <Label Grid.Row="1">Выберите урок:</Label>
-                <ComboBox  Grid.Column="1" Margin="5"/>
-                <ComboBox Grid.Row="1" Grid.Column="1" Margin="5"/>
-                <DatePicker Grid.Row="2" Grid.Column="1" Margin="5"/>
-                <Button Grid.Row="3" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewCabinets" Click="ViewCabinets_Click">Просмотр</Button>
+                <ComboBox  Grid.Column="1" Margin="0,0,5,5"/>
+                <ComboBox Grid.Row="1" Grid.Column="1" Margin="0,0,5,5"/>
+                <DatePicker Grid.Row="2" Grid.Column="1" Margin="0,0,5,0"/>
+                <Expander Header="Дополнительные параметры" Grid.Row="3" Grid.ColumnSpan="2">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <CheckBox Name="CBComputers">Нужен компьютеный класс</CheckBox>
+                        <CheckBox Name="CBWhiteBoard" Grid.Row="1">Нужна доска</CheckBox>
+                        <TextBox Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,0">Сколько учеников?</TextBox>
+                    </Grid>
+                </Expander>
+                <Button Grid.Row="4" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewCabinets" Click="ViewCabinets_Click">Просмотр</Button>
+
             </Grid>
-        </Expander>
+
+
+      </Expander>
         <Expander Header="Посмотрите свое расписание" Grid.Row="1">
             <Grid>
                 <Grid.RowDefinitions>

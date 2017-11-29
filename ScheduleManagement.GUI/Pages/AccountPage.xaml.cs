@@ -27,18 +27,32 @@ namespace ScheduleManagement.GUI.Pages
 
         private void ViewCabinets_Click(object sender, RoutedEventArgs e)
         {
+
             NavigationService.Navigate(PagesStorage.Default.GetViewPage());
 
         }
 
         private void ViewSchedule_Click(object sender, RoutedEventArgs e)
         {
-            //пока не знаю чокак делать
+            NavigationService.Navigate(PagesStorage.Default.GetViewSchedulePage());
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+
+        }
+
+        private void AmountOfStudents_GotFocus(object sender, RoutedEventArgs e)
+        {
+            if (TBAmountOfStudents.Text == "Сколько учеников?")
+                TBAmountOfStudents.Text = "";
+        }
+
+        private void AmountOfStudents_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrWhiteSpace(TBAmountOfStudents.Text))
+                TBAmountOfStudents.Text = "Сколько учеников?";
 
         }
     }

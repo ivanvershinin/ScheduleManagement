@@ -14,7 +14,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <GroupBox BorderBrush="#FF3C4A58">
+        <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр кабинетов">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>

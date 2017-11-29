@@ -14,7 +14,7 @@
             <RowDefinition Height="1*"/>
  
         </Grid.RowDefinitions>
-        <GroupBox BorderBrush="#FF3C4A58" >
+        <GroupBox BorderBrush="#FF3C4A58" Header="Авторизация">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.5*"/>

@@ -27,6 +27,14 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
+            
+            NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+            //конец
+        }
+
+        private void Regist_Click(object sender, RoutedEventArgs e)
+        {
+            if (true) //прописать логику в методе в репозитории 
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
 
         }

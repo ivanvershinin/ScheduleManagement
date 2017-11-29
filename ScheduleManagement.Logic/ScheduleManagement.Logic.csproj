@@ -50,7 +50,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="Interfaces\ICabinetRepository.cs" />
+    <Compile Include="Interfaces\ITutorRepository.cs" />
     <Compile Include="Migrations\201711262028532_InitialCreate.cs" />
     <Compile Include="Migrations\201711262028532_InitialCreate.Designer.cs">
       <DependentUpon>201711262028532_InitialCreate.cs</DependentUpon>
@@ -77,5 +80,6 @@
       <DependentUpon>201711262028532_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -27,13 +27,19 @@ namespace ScheduleManagement.GUI.Pages
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
+            if (true) //прописать логику для метода в репозитории??
+                NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
+            //конец
 
+        }
+         public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

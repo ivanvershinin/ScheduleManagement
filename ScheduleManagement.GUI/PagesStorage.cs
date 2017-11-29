@@ -42,5 +42,11 @@ namespace ScheduleManagement.GUI
             return new ViewPage();
         }
 
+        public ViewSchedulePage GetViewSchedulePage()
+        {
+            return new ViewSchedulePage();
+        }
+
+
     }
 }
