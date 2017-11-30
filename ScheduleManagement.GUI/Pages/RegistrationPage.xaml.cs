@@ -39,15 +39,16 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
+                unitOfWork.TRs.Message += ShowMessage;
                 if (unitOfWork.TRs.CheckRegistration(TBName.Text, TBSurname.Text, TBEmail.Text, PBPassword.Password))
                         NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
-                    else
-                    {
-                    //.........................................ВРЕМЯ СООБЩЕНИЙ ОБ ОШИБКАХ И ДЕЛЕГАТА ДЛЯ НИХ НО МНЕ ЛЕНЬ
-                     }
+                   
             }
+        }
 
-
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }
