@@ -50,11 +50,10 @@ namespace ScheduleManagement.Logic.Repository
             }
             else
             {
-                if (CheckEmail(email) != null)
+                if (CheckEmail(email).Count<Tutor>() != 0)
                 {
                     Message?.Invoke("Пользователь с таким email уже зарегистрирован в системе");
                     return false;
-
                 }
                 else
                 {
@@ -62,6 +61,7 @@ namespace ScheduleManagement.Logic.Repository
                     Tutor tutor = new Tutor()
                     { Name = name, Surname = surname, Email = email, Password = passwordHash };
                     AddTutor(tutor);
+                    _context.SaveChanges();
                     return true;
                 }
 
@@ -84,14 +84,14 @@ namespace ScheduleManagement.Logic.Repository
             }
             else
             {
-                if (CheckEmail(email)==null)
+                if (CheckEmail(email).Count<Tutor>() == 0)
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
                   return false;
                 }
                 else
                 {
-                    if(CheckPassword(email, password)==null)
+                    if(CheckPassword(email, password).Count<Tutor>()==0)
                     {
                         Message?.Invoke("Введен неверный пароль");
                         return false;
@@ -102,6 +102,12 @@ namespace ScheduleManagement.Logic.Repository
                     }
                 }
             }
+        }
+
+        public int SaveLogin(string email)
+        {
+            return CheckEmail(email).First(x => x.Email == email).ID;
+
         }
 
         //Здеся будет круд для регистрации!!
