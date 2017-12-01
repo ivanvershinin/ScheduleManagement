@@ -11,12 +11,13 @@ namespace ScheduleManagement.Logic.Repository
     public class TutorRepository : Repository<Tutor>, ITutorRepository
     {
         public event Action<string> Message;
+
         public TutorRepository(Context context) : base(context)
         {
             Items = context.Tutors.ToList();
         }
 
-        
+
         Authorization authorization = new Authorization();
 
 
@@ -30,10 +31,6 @@ namespace ScheduleManagement.Logic.Repository
             string passwordHash = authorization.CalculateHash(password);
             return _context.Set<Tutor>().Where(t => t.Email == email && t.Password == passwordHash).AsEnumerable<Tutor>();
         }
-
-
-
-
 
         public void AddTutor(Tutor tutor)
         {
@@ -62,20 +59,22 @@ namespace ScheduleManagement.Logic.Repository
                     { Name = name, Surname = surname, Email = email, Password = passwordHash };
                     AddTutor(tutor);
                     _context.SaveChanges();
+                    Message?.Invoke("Вы успешно зарегистрированы");
+
                     return true;
                 }
 
             }
         }
-            
-        
-
-    
 
 
 
 
-        public  bool CheckLogin(string email, string password)
+
+
+
+
+        public bool CheckLogin(string email, string password)
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
             {
@@ -87,11 +86,11 @@ namespace ScheduleManagement.Logic.Repository
                 if (CheckEmail(email).Count<Tutor>() == 0)
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
-                  return false;
+                    return false;
                 }
                 else
                 {
-                    if(CheckPassword(email, password).Count<Tutor>()==0)
+                    if (CheckPassword(email, password).Count<Tutor>() == 0)
                     {
                         Message?.Invoke("Введен неверный пароль");
                         return false;
@@ -110,7 +109,13 @@ namespace ScheduleManagement.Logic.Repository
 
         }
 
-        //Здеся будет круд для регистрации!!
+        public void FormSchedule(DateTime? date)
+        {
+            if (date==null)
+            {
+                //мне лень писать запрос
+            }
+        }
 
     }
 }

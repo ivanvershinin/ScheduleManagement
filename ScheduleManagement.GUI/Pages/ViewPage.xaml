@@ -21,26 +21,15 @@
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <ListBox Name="LBShow" Margin="10">
-                    <ListBox.ItemTemplate>
-                        <DataTemplate>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition ></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                    <ColumnDefinition Width="auto"></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock FontSize="10" Grid.Column="0" Margin="5 0" Text="{Binding Number}"/>
-                                <TextBlock FontSize="10" Grid.Column="1" Margin="5 0" Text="{Binding Floor}"/>
-                                <TextBlock FontSize="10" Grid.Column="2" Margin="5 0" Text="{Binding HasComputers}"/>
-                                <TextBlock FontSize="10" Grid.Column="3" Margin="5 0" Text="{Binding HasWhiteBoard}"/>
-                                <TextBlock FontSize="10" Grid.Column="4" Margin="5 0" Text="{Binding PlacesAmount}"/>
-                            </Grid>
-                        </DataTemplate>
-                    </ListBox.ItemTemplate>
-                </ListBox>
+                <DataGrid Name="DGShow" Margin="10" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Namber}"/>
+                        <DataGridTextColumn Header="Этаж" Binding="{Binding Path=Floor}"/>
+                        <DataGridTextColumn Header="Компьютеры" Binding="{Binding Path=HasComputers}"/>
+                        <DataGridTextColumn Header="Доска" Binding="{Binding Path=HasWhiteBoard}"/>
+                        <DataGridTextColumn Header="Места" Binding="{Binding Path=PlacesAmount}"/>
+                    </DataGrid.Columns>
+                </DataGrid>
                 <CheckBox Margin="10,3" Grid.Row="1">Забронировать на каждую неделю</CheckBox>
                 <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Bind" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Bind_Click">Забронировать</Button>
             </Grid>

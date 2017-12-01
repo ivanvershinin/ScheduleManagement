@@ -27,7 +27,7 @@ namespace ScheduleManagement.GUI.Pages
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork())
             {
-                LBShow.ItemsSource = unitOfWork.CRs.Items;
+                DGShow.ItemsSource = unitOfWork.CRs.Items;
                 unitOfWork.Complete();
             }
         }

@@ -41,8 +41,13 @@ namespace ScheduleManagement.GUI.Pages
             {
                 unitOfWork.TRs.Message += ShowMessage;
                 if (unitOfWork.TRs.CheckRegistration(TBName.Text, TBSurname.Text, TBEmail.Text, PBPassword.Password))
-                        NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
-                   
+                {
+                    TBName.Clear();
+                    TBSurname.Clear();
+                    TBEmail.Clear();
+                    PBPassword.Clear();
+                }
+
             }
         }
 
