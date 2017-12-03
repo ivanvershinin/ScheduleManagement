@@ -13,5 +13,14 @@ namespace ScheduleManagement.Logic.Repository
         {
             Items = context.TutorCabinets.ToList();
         }
+
+        public void FormSchedule(DateTime? date)
+        {
+            if (date == null)
+            {
+                
+            }
+        }
+
     }
 }

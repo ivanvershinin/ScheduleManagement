@@ -15,9 +15,9 @@ namespace ScheduleManagement.Logic.Interfaces
 
         bool CheckLogin(string email, string password);
 
-        IEnumerable<Tutor> CheckEmail(string email);
+        bool EmailExists(string email);
 
-        IEnumerable<Tutor> CheckPassword(string email, string password);
+        bool PasswordIsValid(string email, string password);
 
     }
 }

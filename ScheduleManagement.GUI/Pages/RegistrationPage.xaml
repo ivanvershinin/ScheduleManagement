@@ -13,7 +13,7 @@
             <RowDefinition Height="4*"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <GroupBox BorderBrush="#FF3C4A58" Header="Регистрация">
+        <GroupBox BorderBrush="#FF3C4A58" Header="Регистрация" MaxWidth="880" FontSize="18">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -24,21 +24,21 @@
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="1.5*"/> 
                 </Grid.ColumnDefinitions>
-                <Label VerticalAlignment="Center">Ведите email:</Label>
-                <Label Grid.Row="1" VerticalAlignment="Center">Ведите пароль:</Label>
-                <Label Grid.Row="2" VerticalAlignment="Center">Ведите имя:</Label>
-                <Label Grid.Row="3" VerticalAlignment="Center">Ведите фамилию:</Label>
-                <TextBox Name="TBEmail" Grid.Column="1" Margin="10"/>
-                <PasswordBox Name="PBPassword" Grid.Row="1" Grid.Column="1" Margin="10"/>
-                <TextBox Name="TBName" Grid.Row="2" Grid.Column="1" Margin="10"/>
-                <TextBox Name="TBSurname" Grid.Row="3" Grid.Column="1" Margin="10"/>
-                <Button Grid.Row="4" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Regist_Click">Зарегистрироваться</Button>
+                <Label VerticalAlignment="Center" FontSize="18">Ведите email:</Label>
+                <Label Grid.Row="1" VerticalAlignment="Center" FontSize="18">Ведите пароль:</Label>
+                <Label Grid.Row="2" VerticalAlignment="Center" FontSize="18">Ведите имя:</Label>
+                <Label Grid.Row="3" VerticalAlignment="Center" FontSize="18">Ведите фамилию:</Label>
+                <TextBox Name="TBEmail" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30" />
+                <PasswordBox Name="PBPassword" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30"/>
+                <TextBox Name="TBName" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30" />
+                <TextBox Name="TBSurname" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30"/>
+                <Button Grid.Row="4" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Regist_Click" FontSize="18" MaxWidth="520" Height="50">Зарегистрироваться</Button>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10" Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click">Вернуться</Button>
+        <Button Grid.Row="2" Margin="10" Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click" FontSize="18" MaxWidth="520" Height="50">Вернуться</Button>
 
     </Grid>
 </Page>

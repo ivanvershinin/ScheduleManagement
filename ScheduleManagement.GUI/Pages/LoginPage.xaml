@@ -11,26 +11,26 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="3*"/>
-            <RowDefinition Height="1*"/>
- 
+            <RowDefinition Height="Auto" MinHeight="80"/>
+
         </Grid.RowDefinitions>
-        <GroupBox BorderBrush="#FF3C4A58" Header="Авторизация">
+        <GroupBox BorderBrush="#FF3C4A58" Header="Авторизация" FontSize="18" MaxWidth="880">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition/>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition MinHeight="60"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition MinHeight="60"/>
+                    <RowDefinition Height="Auto" MinHeight="80"/>
                 </Grid.RowDefinitions>
-                <Label Margin="10, 0">Введите email:</Label>
-                <TextBox Margin="10"  Name="TBEmail"  Grid.Row="1"/>
-                <Label Margin="10, 0"  Grid.Row="2">Введите пароль:</Label>
-                <PasswordBox  Margin="10" Name="PBPassword"  Grid.Row="3"/>
-                <Button Margin="10" Content="Войти" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4" Click="LogIn_Click"/>
+                <Label Margin="10, 0" FontSize="18" HorizontalAlignment="Center">Введите email:</Label>
+                <TextBox Margin="10"  Name="TBEmail"  Grid.Row="1" MaxWidth="520" Height="30" FontSize="18"/>
+                <Label Margin="10, 0"  Grid.Row="2" FontSize="18" HorizontalAlignment="Center">Введите пароль:</Label>
+                <PasswordBox  Margin="10" Name="PBPassword"  Grid.Row="3" MaxWidth="520" Height="30"/>
+                <Button Margin="10" MaxWidth="520" Height="55" Content="Войти" FontSize="18" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4" Click="LogIn_Click"/>
             </Grid>
         </GroupBox>
-        <Button  Margin="10" Height="30" Content="Вернуться" Name="Return" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click"/>
+        <Button  Margin="10" Height="55"  MaxWidth="520" Content="Вернуться" Name="Return"  FontSize="18" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click"/>
 
     </Grid>
 </Page>

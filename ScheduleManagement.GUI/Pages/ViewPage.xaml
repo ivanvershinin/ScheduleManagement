@@ -14,27 +14,38 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр кабинетов">
+        <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр кабинетов" FontSize="18" MaxWidth="880">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition/>
                 </Grid.RowDefinitions>
-                <DataGrid Name="DGShow" Margin="10" AutoGenerateColumns="False">
+                <DataGrid Name="DGShow" Margin="10" AutoGenerateColumns="False" IsReadOnly="True" FontSize="18" MaxWidth="560">
                     <DataGrid.Columns>
-                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Namber}"/>
+                        <DataGridTextColumn Header="Кабинет" Binding="{Binding Path=Number}"/>
                         <DataGridTextColumn Header="Этаж" Binding="{Binding Path=Floor}"/>
-                        <DataGridTextColumn Header="Компьютеры" Binding="{Binding Path=HasComputers}"/>
-                        <DataGridTextColumn Header="Доска" Binding="{Binding Path=HasWhiteBoard}"/>
+                        <DataGridCheckBoxColumn Header="Компьютеры" Binding="{Binding Path=HasComputers}"/>
+                        <DataGridCheckBoxColumn Header="Доска" Binding="{Binding Path=HasWhiteBoard}"/>
                         <DataGridTextColumn Header="Места" Binding="{Binding Path=PlacesAmount}"/>
                     </DataGrid.Columns>
+                    <DataGrid.CellStyle>
+                        <Style TargetType="DataGridCell">
+                            <Style.Triggers>
+                                <Trigger Property="IsSelected" Value="True">
+                                    <Setter Property="Background" Value="#FF18AFE5" />
+                                    <Setter Property="BorderBrush" Value="#FF18AFE5" />
+                                    <Setter Property="Foreground" Value="#FFE6E6F5" />
+                                </Trigger>
+                            </Style.Triggers>
+                        </Style>
+                    </DataGrid.CellStyle>
                 </DataGrid>
-                <CheckBox Margin="10,3" Grid.Row="1">Забронировать на каждую неделю</CheckBox>
-                <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Bind" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Bind_Click">Забронировать</Button>
+                <CheckBox Margin="10,3" Grid.Row="1" MaxWidth="560" FontSize="18">Забронировать на каждую неделю</CheckBox>
+                <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Bind" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Bind_Click" MaxWidth="560" FontSize="18" Height="50">Забронировать</Button>
             </Grid>
         </GroupBox>
-        <Button Grid.Row="2" Margin="10,5" Name="ReturnToAccount" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="ReturnToAccount_Click">Вернуться к аккаунту</Button>
+        <Button Grid.Row="2" Margin="10,5" Name="ReturnToAccount" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="ReturnToAccount_Click" MaxWidth="560" FontSize="18" Height="50">Вернуться к аккаунту</Button>
 
 
     </Grid>

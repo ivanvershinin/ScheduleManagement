@@ -21,15 +21,15 @@ namespace ScheduleManagement.Logic.Repository
         Authorization authorization = new Authorization();
 
 
-        public IEnumerable<Tutor> CheckEmail(string email)
+        public bool EmailExists(string email)
         {
-            return _context.Set<Tutor>().Where(t => t.Email == email).AsEnumerable<Tutor>();
+            return _context.Set<Tutor>().Any(t => t.Email == email);
         }
 
-        public IEnumerable<Tutor> CheckPassword(string email, string password)
+        public bool PasswordIsValid(string email, string password)
         {
             string passwordHash = authorization.CalculateHash(password);
-            return _context.Set<Tutor>().Where(t => t.Email == email && t.Password == passwordHash).AsEnumerable<Tutor>();
+            return _context.Set<Tutor>().Any(t => t.Email == email && t.Password == passwordHash);
         }
 
         public void AddTutor(Tutor tutor)
@@ -47,7 +47,7 @@ namespace ScheduleManagement.Logic.Repository
             }
             else
             {
-                if (CheckEmail(email).Count<Tutor>() != 0)
+                if (EmailExists(email))
                 {
                     Message?.Invoke("Пользователь с таким email уже зарегистрирован в системе");
                     return false;
@@ -67,13 +67,7 @@ namespace ScheduleManagement.Logic.Repository
             }
         }
 
-
-
-
-
-
-
-
+        
         public bool CheckLogin(string email, string password)
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
@@ -83,14 +77,14 @@ namespace ScheduleManagement.Logic.Repository
             }
             else
             {
-                if (CheckEmail(email).Count<Tutor>() == 0)
+                if (!EmailExists(email))
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
                     return false;
                 }
                 else
                 {
-                    if (CheckPassword(email, password).Count<Tutor>() == 0)
+                    if (!PasswordIsValid(email, password))
                     {
                         Message?.Invoke("Введен неверный пароль");
                         return false;
@@ -105,17 +99,9 @@ namespace ScheduleManagement.Logic.Repository
 
         public int SaveLogin(string email)
         {
-            return CheckEmail(email).First(x => x.Email == email).ID;
-
+            return _context.Set<Tutor>().First(x => x.Email == email).ID;
         }
 
-        public void FormSchedule(DateTime? date)
-        {
-            if (date==null)
-            {
-                //мне лень писать запрос
-            }
-        }
 
     }
 }

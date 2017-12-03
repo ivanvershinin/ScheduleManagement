@@ -37,7 +37,9 @@ namespace ScheduleManagement.GUI.Pages
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
-           //идк нужно или нет !!
+            NavigationService.Navigate(PagesStorage.Default.GetGuestViewPage());
+            //конец
+
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)
