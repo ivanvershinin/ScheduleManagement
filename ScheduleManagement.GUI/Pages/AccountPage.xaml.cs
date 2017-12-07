@@ -35,8 +35,17 @@ namespace ScheduleManagement.GUI.Pages
 
         private void ViewCabinets_Click(object sender, RoutedEventArgs e)
         {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                unitOfWork.TCRs.Message += ShowMessage;
 
-            NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+                if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate))
+                {
+                    //(unitOfWork.TCRs.CheckData(
+                    NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+                }
+            }
+
 
         }
 
@@ -63,5 +72,10 @@ namespace ScheduleManagement.GUI.Pages
                 TBAmountOfStudents.Text = "Сколько учеников?";
 
         }
+        public void ShowMessage(string message)
+        {
+            MessageBox.Show(message);
+        }
+
     }
 }

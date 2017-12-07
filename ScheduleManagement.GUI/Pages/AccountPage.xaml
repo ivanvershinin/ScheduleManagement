@@ -10,12 +10,12 @@
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2.5*"/>
-            <RowDefinition/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition  Height="Auto"/>
             <RowDefinition Height="Auto"/>
 
         </Grid.RowDefinitions>
-        <Expander Header="Забронируйте кабинет" FontSize="18">
+        <Expander Header="Забронируйте кабинет" FontSize="18" MaxWidth="880">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -27,16 +27,16 @@
 
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="0.75*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Row="2" FontSize="18">Выберите дату:</Label>
-                <Label FontSize="18">Выберите школу:</Label>
-                <Label Grid.Row="1" FontSize="18">Выберите урок:</Label>
+                <Label Grid.Row="2" FontSize="18" Margin="10">Выберите дату:</Label>
+                <Label FontSize="18" Margin="10">Выберите школу:</Label>
+                <Label Grid.Row="1" Margin="10" FontSize="18">Выберите урок:</Label>
                 <ComboBox Height="30" Name="CMBSchool" DisplayMemberPath="Adress" Grid.Column="1" Margin="0,0,5,5" MaxWidth="420" />
                 <ComboBox Height="30" Name="CMBLesson" Grid.Row="1" Grid.Column="1" Margin="0,0,5,5" MaxWidth="420" />
-                <DatePicker Height="30" Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" MaxWidth="420" />
-                <Expander Header="Дополнительные параметры" Grid.Row="3" Grid.ColumnSpan="2" FontSize="18">
+                <DatePicker Height="30" Grid.Row="2" Grid.Column="1" Margin="0,0,5,0" MaxWidth="420" Name="DP"/>
+                <Expander Header="Дополнительные параметры" Grid.Row="3" Grid.ColumnSpan="2" FontSize="18" Name="Details">
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
@@ -44,12 +44,33 @@
 
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="0.75*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Name="CBComputers" FontSize="18">Нужен компьютеный класс</CheckBox>
-                        <CheckBox Name="CBWhiteBoard" Grid.Row="1" FontSize="18">Нужна доска</CheckBox>
-                        <TextBox  MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="10">Сколько учеников?</TextBox>
+                        <CheckBox Margin="5,0,0,0" Name="CBComputers" FontSize="18">Нужен компьютеный класс</CheckBox>
+                        <CheckBox Margin="5,0,0,0" Name="CBWhiteBoard" Grid.Row="1" FontSize="18">Нужна доска
+                            <CheckBox.Style>
+                                <Style TargetType="CheckBox">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="False">
+                                            <Setter Property="IsChecked" Value="True" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </CheckBox.Style>
+
+                        </CheckBox>
+                        <TextBox MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,5" >
+                            <TextBox.Style>
+                                <Style TargetType="TextBox">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="False">
+                                            <Setter Property="Text" Value="25" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBox.Style>
+                        </TextBox>
                     </Grid>
                 </Expander>
                 <Button Height="40" FontSize="18" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewCabinets" Click="ViewCabinets_Click" MaxWidth="420" >Просмотр</Button>
@@ -58,18 +79,15 @@
 
 
       </Expander>
-        <Expander Header="Посмотрите свое расписание" Grid.Row="1" FontSize="18">
+        <Expander Header="Посмотрите свое расписание" Grid.Row="1" FontSize="18" MaxWidth="880">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="0.75*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Label FontSize="18">Выберите дату:</Label>
-                <DatePicker Height="30" Grid.Column="1" Margin="10" MaxWidth="420" />
                 <Button Height="40" MaxWidth="420" FontSize="18" Grid.Row="1" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewSchedule" Click="ViewSchedule_Click">Просмотр</Button>
 
             </Grid>

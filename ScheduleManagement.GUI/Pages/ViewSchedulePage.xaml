@@ -11,9 +11,13 @@
     <Grid>
         <Grid>
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="6*"/>
                 <RowDefinition/>
             </Grid.RowDefinitions>
+
+            <Label Margin="5,0,0,0" FontSize="18">Выберите дату:</Label>
+            <DatePicker Height="30" Grid.Column="1" Margin="0,0,5,5" MaxWidth="420" />
 
             <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр расписания" FontSize="18" MaxWidth="880">
                 <Grid>

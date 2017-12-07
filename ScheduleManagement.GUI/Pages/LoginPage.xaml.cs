@@ -27,14 +27,19 @@ namespace ScheduleManagement.GUI.Pages
         {
             InitializeComponent();
         }
+        string savedEmail;
 
         private void LogIn_Click(object sender, RoutedEventArgs e)
         {
             using (var unitOfWork = new UnitOfWork())
             {
                 unitOfWork.TRs.Message += ShowMessage;
-                if (unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password))
-                    NavigationService.Navigate(PagesStorage.Default.GetAccountPage());               
+                savedEmail = unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password);
+                if (savedEmail!=null)
+                {
+                    unitOfWork.TCRs.SaveId(savedEmail);
+                    NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
+                }
             }
         }
 

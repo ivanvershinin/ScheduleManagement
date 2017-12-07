@@ -8,9 +8,14 @@ using ScheduleManagement.Logic.Interfaces;
 
 namespace ScheduleManagement.Logic.Repository
 {
+    public delegate int EmailCallback(string email);
+
     public class TutorRepository : Repository<Tutor>, ITutorRepository
     {
         public event Action<string> Message;
+        public  EmailCallback GotEmail;
+
+
 
         public TutorRepository(Context context) : base(context)
         {
@@ -68,39 +73,40 @@ namespace ScheduleManagement.Logic.Repository
         }
 
         
-        public bool CheckLogin(string email, string password)
+        public string CheckLogin(string email, string password)
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
             {
                 Message?.Invoke("Введите данные");
-                return false;
+                return null;
             }
             else
             {
                 if (!EmailExists(email))
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
-                    return false;
+                    return null;
                 }
                 else
                 {
                     if (!PasswordIsValid(email, password))
                     {
                         Message?.Invoke("Введен неверный пароль");
-                        return false;
+                        return null;
                     }
                     else
                     {
-                        return true;
+                        return email;
                     }
                 }
             }
         }
 
-        public int SaveLogin(string email)
-        {
-            return _context.Set<Tutor>().First(x => x.Email == email).ID;
-        }
+
+        //public int SaveLogin(string email)
+        //{
+        //     return _context.Set<Tutor>().First(x => x.Email == email).ID;
+        //}
 
 
     }

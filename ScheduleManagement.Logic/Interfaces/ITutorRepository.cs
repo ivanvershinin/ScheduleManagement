@@ -13,7 +13,7 @@ namespace ScheduleManagement.Logic.Interfaces
 
         bool CheckRegistration(string name, string surname, string email, string password);
 
-        bool CheckLogin(string email, string password);
+        string CheckLogin(string email, string password);
 
         bool EmailExists(string email);
 
