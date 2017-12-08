@@ -15,7 +15,7 @@ namespace ScheduleManagement.Logic.Repository
         public event Action<string> Message;
         public  EmailCallback GotEmail;
 
-
+        //месте4ко для делегата
 
         public TutorRepository(Context context) : base(context)
         {
@@ -73,40 +73,41 @@ namespace ScheduleManagement.Logic.Repository
         }
 
         
-        public string CheckLogin(string email, string password)
+        public bool CheckLogin(string email, string password)
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
             {
                 Message?.Invoke("Введите данные");
-                return null;
+                return false;
             }
             else
             {
                 if (!EmailExists(email))
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
-                    return null;
+                    return false;
                 }
                 else
                 {
                     if (!PasswordIsValid(email, password))
                     {
                         Message?.Invoke("Введен неверный пароль");
-                        return null;
+                        return false;
                     }
                     else
                     {
-                        return email;
+                        CurrentId = SaveLogin(email);
+                        return true;
                     }
                 }
             }
         }
 
 
-        //public int SaveLogin(string email)
-        //{
-        //     return _context.Set<Tutor>().First(x => x.Email == email).ID;
-        //}
+        public int SaveLogin(string email)
+        {
+            return _context.Set<Tutor>().First(x => x.Email == email).ID;
+        }
 
 
     }

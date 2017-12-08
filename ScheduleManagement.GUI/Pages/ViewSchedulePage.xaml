@@ -17,9 +17,9 @@
             </Grid.RowDefinitions>
 
             <Label Margin="5,0,0,0" FontSize="18">Выберите дату:</Label>
-            <DatePicker Height="30" Grid.Column="1" Margin="0,0,5,5" MaxWidth="420" />
+            <DatePicker Height="30" Grid.Column="1" Margin="0,0,5,5" MaxWidth="420"  SelectedDateChanged="DatePicker_SelectedDateChanged" Name="DP"/>
 
-            <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр расписания" FontSize="18" MaxWidth="880">
+            <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр расписания" FontSize="18" MaxWidth="880"  Grid.Row="1">
                 <Grid>
                     <DataGrid Name="DGShowSchedule" Margin="20, 10"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="18" MaxWidth="560">
                         <DataGrid.Columns>
