@@ -26,7 +26,7 @@ namespace ScheduleManagement.Logic.Repository
 
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
-        public void FormSchedule(DateTime? date, string email)
+        public void FormSchedule(DateTime? date, int? id)
         {
             if (date == null)
             {
@@ -40,10 +40,6 @@ namespace ScheduleManagement.Logic.Repository
         }
 
 
-        public int SaveId(string email)
-        {
-             return _context.Set<Tutor>().First(x => x.Email == email).ID;
-        }
 
         public bool CheckData(string amount, DateTime? date, int? schoolNumber, int? lesson)
         {

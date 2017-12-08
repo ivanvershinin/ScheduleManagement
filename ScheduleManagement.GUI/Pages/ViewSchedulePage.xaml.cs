@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ScheduleManagement.Logic;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,5 +32,12 @@ namespace ScheduleManagement.GUI.Pages
 
         }
 
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                unitOfWork.TCRs.FormSchedule(DP.SelectedDate, unitOfWork.TRs.CurrentId);
+            }
+        }
     }
 }
