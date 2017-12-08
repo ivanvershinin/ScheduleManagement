@@ -20,6 +20,7 @@ namespace ScheduleManagement.Logic.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
+
             School school1 = new School { Adress = "Кирпичная, 33" };
             School school2 = new School { Adress = "Мясницкая, 11" };
             School school3 = new School { Adress = "Шаболовская, 20" };

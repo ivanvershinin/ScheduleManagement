@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduleManagement.Logic;
 using ScheduleManagement.Logic.Repository;
+using ScheduleManagement.Logic.Model;
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -35,6 +36,19 @@ namespace ScheduleManagement.GUI.Pages
         private void Bind_Click(object sender, RoutedEventArgs e)
         {
             //запрос + нужна ли проверка чтобы один препод 2 ряда не привязывал кабинет !!!1
+            using (var unitOfWork = new UnitOfWork())
+            {
+                
+                var SelectedCabinet = DGShow.SelectedItem as Cabinet;
+                if (SelectedCabinet != null)
+                {
+                    var idcabinet = SelectedCabinet.ID;
+                    var iduser = Storage.Default.CurrentID;
+                    var datechosen = Storage.Default.DateChosen;
+                    var lessonorder = Storage.Default.LessonChosen;
+                    unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
+                }
+            }
         }
 
         private void ReturnToAccount_Click(object sender, RoutedEventArgs e)

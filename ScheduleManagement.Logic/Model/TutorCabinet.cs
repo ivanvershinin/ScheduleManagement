@@ -16,7 +16,9 @@ namespace ScheduleManagement.Logic.Model
         public int LessonOrder { get; set; }
         [Required, Key, Column(Order = 2), DatabaseGenerated(DatabaseGeneratedOption.None)]
         public DateTime Date { get; set; }
-        
+
+        public int TutorId { get; set; }
+
         public Cabinet Cabinet { get; set; }
         public Tutor Tutor { get; set; }
         

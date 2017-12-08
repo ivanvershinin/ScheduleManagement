@@ -34,10 +34,17 @@ namespace ScheduleManagement.GUI.Pages
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
+           
             using (var unitOfWork = new UnitOfWork())
             {
-                unitOfWork.TCRs.FormSchedule(DP.SelectedDate, unitOfWork.TRs.CurrentId);
+                var id = Storage.Default.CurrentID;
+                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(DP.SelectedDate, id);
             }
+        }
+
+        private void Update(int i)
+        {
+
         }
     }
 }

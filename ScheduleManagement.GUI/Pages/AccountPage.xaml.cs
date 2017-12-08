@@ -47,6 +47,8 @@ namespace ScheduleManagement.GUI.Pages
 
                 if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate, school?.ID, lesson))
                 {
+                    Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
+                    Storage.Default.LessonChosen = (int)lesson;
                     unitOfWork.TCRs.FindCabinets(school?.ID, lesson, DP.SelectedDate, int.Parse(TBAmountOfStudents.Text), CBComputers.IsChecked, CBWhiteBoard.IsChecked);
                     NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }

@@ -96,7 +96,6 @@ namespace ScheduleManagement.Logic.Repository
                     }
                     else
                     {
-                        CurrentId = SaveLogin(email);
                         return true;
                     }
                 }

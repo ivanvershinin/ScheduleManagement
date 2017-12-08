@@ -39,13 +39,13 @@ namespace ScheduleManagement.Logic.Migrations
                         CabinetId = c.Int(nullable: false),
                         LessonOrder = c.Int(nullable: false),
                         Date = c.DateTime(nullable: false),
-                        Tutor_ID = c.Int(),
+                        TutorId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => new { t.CabinetId, t.LessonOrder, t.Date })
                 .ForeignKey("dbo.Cabinets", t => t.CabinetId, cascadeDelete: true)
-                .ForeignKey("dbo.Tutors", t => t.Tutor_ID)
+                .ForeignKey("dbo.Tutors", t => t.TutorId, cascadeDelete: true)
                 .Index(t => t.CabinetId)
-                .Index(t => t.Tutor_ID);
+                .Index(t => t.TutorId);
             
             CreateTable(
                 "dbo.Tutors",
@@ -63,10 +63,10 @@ namespace ScheduleManagement.Logic.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.TutorCabinets", "Tutor_ID", "dbo.Tutors");
+            DropForeignKey("dbo.TutorCabinets", "TutorId", "dbo.Tutors");
             DropForeignKey("dbo.TutorCabinets", "CabinetId", "dbo.Cabinets");
             DropForeignKey("dbo.Cabinets", "School_ID", "dbo.Schools");
-            DropIndex("dbo.TutorCabinets", new[] { "Tutor_ID" });
+            DropIndex("dbo.TutorCabinets", new[] { "TutorId" });
             DropIndex("dbo.TutorCabinets", new[] { "CabinetId" });
             DropIndex("dbo.Cabinets", new[] { "School_ID" });
             DropTable("dbo.Tutors");

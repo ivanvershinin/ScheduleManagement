@@ -54,9 +54,9 @@
     <Compile Include="Context.cs" />
     <Compile Include="Interfaces\ICabinetRepository.cs" />
     <Compile Include="Interfaces\ITutorRepository.cs" />
-    <Compile Include="Migrations\201711262028532_InitialCreate.cs" />
-    <Compile Include="Migrations\201711262028532_InitialCreate.Designer.cs">
-      <DependentUpon>201711262028532_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201712082137420_InitialCreate.cs" />
+    <Compile Include="Migrations\201712082137420_InitialCreate.Designer.cs">
+      <DependentUpon>201712082137420_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cabinet.cs" />
@@ -69,6 +69,7 @@
     <Compile Include="Repository\SchoolRepostory.cs" />
     <Compile Include="Repository\TutorCabinetRepository.cs" />
     <Compile Include="Repository\TutorRepository.cs" />
+    <Compile Include="Storage.cs" />
     <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -76,10 +77,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711262028532_InitialCreate.resx">
-      <DependentUpon>201711262028532_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712082137420_InitialCreate.resx">
+      <DependentUpon>201712082137420_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

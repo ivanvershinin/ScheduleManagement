@@ -21,22 +21,20 @@ namespace ScheduleManagement.Logic.Repository
         }
         static int intx;
 
-        public Func<DateTime?, bool> CheckDate = (x => x == null && x > DateTime.Today);
+        public Func<DateTime?, bool> CheckDate = (x => x != null && x >= DateTime.Today);
 
 
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
-        public void FormSchedule(DateTime? date, int? id)
+        public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
         {
-            if (date == null)
-            {
-                
-            }
-            else
-            {
+            //if (date == null)
+            //{
 
-            }
-
+            //} else {}
+            var r = _context.TutorCabinets
+                  .Where(t => t.Date == date && t.TutorId == id).ToList();
+            return r;
         }
 
 
@@ -75,6 +73,15 @@ namespace ScheduleManagement.Logic.Repository
         public void FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
 
+        }
+
+        public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)
+        {
+            if (_context.TutorCabinets.Where(t => t.CabinetId == idcab && t.Date == date && t.LessonOrder == lessonord).ToList().Count == 0)
+            {
+                _context.TutorCabinets.Add(new TutorCabinet { CabinetId = idcab, Date = date, LessonOrder = lessonord , TutorId = idtut});
+                _context.SaveChanges();
+            }
         }
     }
 }
