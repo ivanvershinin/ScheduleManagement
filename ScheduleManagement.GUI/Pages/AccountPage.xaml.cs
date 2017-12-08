@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ScheduleManagement.Logic;
 using ScheduleManagement.Logic.Repository;
+using ScheduleManagement.Logic.Model;
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -24,14 +25,19 @@ namespace ScheduleManagement.GUI.Pages
     {
         public AccountPage()
         {
+            List<int> lessons = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }; //АСТАРОЖЖЖНА ТВЕРДЫЙ КОД
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork())
             {
                 CMBSchool.ItemsSource = unitOfWork.SRs.Items;
-                //проблема с выбором номера урока, у нас нет всего набора отдельно, надо либо писать запрос либо хардкодить
+                CMBSchool.ItemsSource = unitOfWork.SRs.Items;
                 unitOfWork.Complete();
             }
+            CMBLesson.ItemsSource = lessons;
         }
+
+        School school;
+        int? lesson;
 
         private void ViewCabinets_Click(object sender, RoutedEventArgs e)
         {
@@ -39,9 +45,9 @@ namespace ScheduleManagement.GUI.Pages
             {
                 unitOfWork.TCRs.Message += ShowMessage;
 
-                if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate))
+                if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate, school?.ID, lesson))
                 {
-                    //(unitOfWork.TCRs.CheckData(
+                    (unitOfWork.TCRs.FindCabinets(school?.ID, lesson, DP.SelectedDate, int.Parse(TBAmountOfStudents.Text), CBComputers.IsChecked, CBWhiteBoard.IsChecked);
                     NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
             }
@@ -72,10 +78,22 @@ namespace ScheduleManagement.GUI.Pages
                 TBAmountOfStudents.Text = "Сколько учеников?";
 
         }
+
+
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);
         }
 
+        private void CMBSchool_Selected(object sender, RoutedEventArgs e)
+        {
+          school = CMBSchool.SelectedItem as School;
+        }
+
+        private void CMBLesson_Selected(object sender, RoutedEventArgs e)
+        {
+            lesson = CMBLesson.SelectedItem as int?;
+
+        }
     }
 }

@@ -21,6 +21,9 @@ namespace ScheduleManagement.Logic.Repository
         }
         static int intx;
 
+        public Func<DateTime?, bool> CheckDate = (x => x == null && x > DateTime.Today);
+
+
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
         public void FormSchedule(DateTime? date, string email)
@@ -42,11 +45,11 @@ namespace ScheduleManagement.Logic.Repository
              return _context.Set<Tutor>().First(x => x.Email == email).ID;
         }
 
-        public bool CheckData(string amount, DateTime? date)
+        public bool CheckData(string amount, DateTime? date, int? schoolNumber, int? lesson)
         {
-            if (date == null)
+            if (!CheckDate(date))
             {
-                Message?.Invoke("Введите дату");
+                Message?.Invoke("Введите дату, начиная с сегодняшней");
                 return false;
             }
 
@@ -56,9 +59,26 @@ namespace ScheduleManagement.Logic.Repository
                 return false;
 
             }
+            else if (schoolNumber == null)
+            {
+                Message?.Invoke("Выберите школу");
+                return false;
+
+
+            }
+            else if (lesson == null)
+            {
+                Message?.Invoke("Выберите урок");
+                return false;
+
+
+            }
             else
-                return true;
+            return true;
         }
-        
+        public void FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
+        {
+
+        }
     }
 }
