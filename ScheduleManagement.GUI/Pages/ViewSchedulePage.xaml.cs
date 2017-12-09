@@ -42,9 +42,6 @@ namespace ScheduleManagement.GUI.Pages
             }
         }
 
-        private void Update(int i)
-        {
-
-        }
+        
     }
 }

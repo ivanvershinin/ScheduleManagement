@@ -28,10 +28,7 @@ namespace ScheduleManagement.Logic.Repository
 
         public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
         {
-            //if (date == null)
-            //{
 
-            //} else {}
             var r = _context.TutorCabinets
                   .Where(t => t.Date == date && t.TutorId == id).ToList();
             return r;
@@ -77,7 +74,7 @@ namespace ScheduleManagement.Logic.Repository
 
         public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)
         {
-            if (_context.TutorCabinets.Where(t => t.CabinetId == idcab && t.Date == date && t.LessonOrder == lessonord).ToList().Count == 0)
+            if (_context.TutorCabinets.Any(t => t.CabinetId == idcab && t.Date == date && t.LessonOrder == lessonord))
             {
                 _context.TutorCabinets.Add(new TutorCabinet { CabinetId = idcab, Date = date, LessonOrder = lessonord , TutorId = idtut});
                 _context.SaveChanges();

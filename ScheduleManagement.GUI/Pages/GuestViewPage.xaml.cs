@@ -32,6 +32,7 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
+            NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
 
         }
     }

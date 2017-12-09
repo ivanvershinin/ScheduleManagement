@@ -21,9 +21,11 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
 
+                    <RowDefinition Height="Auto"/>
                     <RowDefinition Height="3*"/>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
+
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto"/>
@@ -34,11 +36,12 @@
                 <Label FontSize="18" >Выберите дату:</Label>
                 <Label FontSize="18" Grid.Row="2">Выберите учителя:</Label>
                 <ComboBox  Grid.Row="2" Name="Tutors" Grid.Column="1" Height="30" MaxWidth="300" Margin="10"/>
-                <ComboBox Grid.Row="1" Name="School" Grid.Column="1" Height="30" MaxWidth="300" Margin="10"/>
+                <ComboBox Grid.Row="1" Name="School" Grid.Column="1" Height="30" MaxWidth="300" Margin="5"/>
                 <DatePicker Name="Date"  Grid.Column="1" Height="30" MaxWidth="300" Margin="10"/>
+                <Button  Name="ViewSched" Grid.Row="3"  Grid.Column="1" Height="30" MaxWidth="300" Margin="5">Просмотреть</Button>
 
 
-                <ListView Name="DGShowSchedule" Margin="20, 10"   Grid.Column="1" Grid.Row="3" FontSize="18" Width="300">
+                <ListView Name="DGShowSchedule" Margin="20, 10"   Grid.Column="1" Grid.Row="4" FontSize="18" Width="300">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <WrapPanel HorizontalAlignment="Center">
@@ -50,20 +53,13 @@
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="1*"/>
                                     </Grid.ColumnDefinitions>
-                                    <TextBlock Margin="10, 5, 10, 10" VerticalAlignment="Center" FontFamily="Arial" FontSize="13.333">
-                                <Run>Purcahse price:</Run>
-                                <Run Text="{Binding PurchasePrice}"></Run>
-                                    </TextBlock>
-                                    <TextBlock Margin="10, 5, 10, 10" Grid.Column="1" VerticalAlignment="Center" FontFamily="Arial" FontSize="13.333">
-                                <Run>Selling price:</Run>
-                                <Run Text="{Binding SellingPrice}"></Run>
-                                    </TextBlock>
+
                                 </Grid>
                             </WrapPanel>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button FontSize="18" Name="Clear" Click="Clear_Click" Margin="10" MaxWidth="560" Height="50" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Grid.Row="4" Grid.ColumnSpan="2">Сбросить</Button>
+                <Button FontSize="18" Name="Clear" Click="Clear_Click" Margin="10" MaxWidth="560" Height="50" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Grid.Row="5" Grid.ColumnSpan="2">Сбросить</Button>
             </Grid>
         </GroupBox>
         <Button Grid.Row="5" Margin="10,5" Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Height="50" MaxWidth="560" FontSize="18" Click="Return_Click">Вернуться к аккаунту</Button>
