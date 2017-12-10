@@ -16,21 +16,22 @@
             </Grid.RowDefinitions>
 
 
-            <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр расписания" FontSize="18" MaxWidth="880"  Grid.Row="1">
+            <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр расписания" FontSize="18" MaxWidth="880">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition/>
                     </Grid.ColumnDefinitions>
 
-                    <DataGrid Name="DGShowSchedule" Margin="20, 10"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="18" MaxWidth="560" Grid.Row="1">
+                    <DataGrid Name="DGShowSchedule" Margin="20, 10"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="18" MaxWidth="560" Grid.Row="1" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Урок" Binding="{Binding Path=LessonOrder}" Width="1*"/>
-                            <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=CabinetId}" Width="1*"/>
+                            <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=Number}" Width="1.5*"/>
+                            <DataGridTextColumn Header="Школа" Binding="{Binding Path=School}" Width="5*"/>
                         </DataGrid.Columns>
 
                     </DataGrid>

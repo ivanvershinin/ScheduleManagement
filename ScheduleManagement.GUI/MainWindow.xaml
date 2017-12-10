@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScheduleManagement.GUI"
         mc:Ignorable="d"
-        Title="ScheduleManagement" Height="560" Width="720">
+        Title="ScheduleManagement" Height="560" Width="720" ResizeMode="CanResize">
     <Grid>
         <Frame Name="Frame" NavigationUIVisibility="Hidden"/>
 

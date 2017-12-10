@@ -31,10 +31,10 @@
                 <Label Grid.Row="1" VerticalAlignment="Center" FontSize="18">Ведите пароль:</Label>
                 <Label Grid.Row="2" VerticalAlignment="Center" FontSize="18">Ведите имя:</Label>
                 <Label Grid.Row="3" VerticalAlignment="Center" FontSize="18">Ведите фамилию:</Label>
-                <TextBox Name="TBEmail" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30" />
-                <PasswordBox Name="PBPassword" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30"/>
-                <TextBox Name="TBName" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30" />
-                <TextBox Name="TBSurname" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="520" Height="30"/>
+                <TextBox Name="TBEmail" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="420" Height="30" />
+                <PasswordBox Name="PBPassword" Grid.Row="1" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="420" Height="30"/>
+                <TextBox Name="TBName" Grid.Row="2" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="420" Height="30" />
+                <TextBox Name="TBSurname" Grid.Row="3" Grid.Column="1" Margin="10" FontSize="18" MaxWidth="420" Height="30"/>
                 <Button Grid.Row="4" Grid.ColumnSpan="2" Name="Regist" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Regist_Click" FontSize="18" MaxWidth="520" Height="50">Зарегистрироваться</Button>
             </Grid>
         </GroupBox>
