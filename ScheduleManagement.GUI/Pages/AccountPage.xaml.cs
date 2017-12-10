@@ -49,7 +49,11 @@ namespace ScheduleManagement.GUI.Pages
                 {
                     Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
                     Storage.Default.LessonChosen = (int)lesson;
-                    unitOfWork.TCRs.FindCabinets(school?.ID, lesson, DP.SelectedDate, int.Parse(TBAmountOfStudents.Text), CBComputers.IsChecked, CBWhiteBoard.IsChecked);
+                    var school = CMBSchool.SelectedItem as School;
+                    Storage.Default.SchoolAddress = school.Adress;
+                    Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
+                    Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
+                    Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
                     NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
             }

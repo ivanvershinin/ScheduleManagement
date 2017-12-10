@@ -28,7 +28,13 @@ namespace ScheduleManagement.GUI.Pages
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork())
             {
-                DGShow.ItemsSource = unitOfWork.CRs.Items;
+                var lessonord = Storage.Default.LessonChosen;
+                var datechosen = Storage.Default.DateChosen;
+                var schoolchosen = Storage.Default.SchoolAddress;
+                var studentsam = Storage.Default.StudentAmount;
+                var computers = Storage.Default.CompNeed;
+                var board = Storage.Default.BoardNeed;
+                DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
                 unitOfWork.Complete();
             }
         }

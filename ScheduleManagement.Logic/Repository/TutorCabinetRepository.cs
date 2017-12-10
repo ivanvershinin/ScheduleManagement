@@ -67,14 +67,18 @@ namespace ScheduleManagement.Logic.Repository
             else
             return true;
         }
-        public void FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
+        public IEnumerable<Cabinet> FindCabinets(string schoolAddress, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
-
+            var one = _context.Schools.Single(x => x.Adress == schoolAddress).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
+            x.HasWhiteBoard == hasWhiteboard &&
+            x.PlacesAmount >= amount);
+            var two = one.Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+            return two;
         }
 
         public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)
         {
-            if (_context.TutorCabinets.Any(t => t.CabinetId == idcab && t.Date == date && t.LessonOrder == lessonord))
+            if (!(_context.TutorCabinets.Any(t => t.CabinetId == idcab && t.Date == date && t.LessonOrder == lessonord)))
             {
                 _context.TutorCabinets.Add(new TutorCabinet { CabinetId = idcab, Date = date, LessonOrder = lessonord , TutorId = idtut});
                 _context.SaveChanges();
