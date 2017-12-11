@@ -12,6 +12,7 @@ namespace ScheduleManagement.Logic.Model
     {
         [Key, Column(Order = 0)]
         public int ID { get; set; }
+        public int Number { get; set; }
         public string Adress { get; set; }
 
         public virtual List<Cabinet> Cabinets { get; set; }

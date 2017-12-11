@@ -20,10 +20,9 @@ namespace ScheduleManagement.Logic.Migrations
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data.
-
-            School school1 = new School { Adress = "Кирпичная, 33" };
-            School school2 = new School { Adress = "Мясницкая, 11" };
-            School school3 = new School { Adress = "Шаболовская, 20" };
+            School school1 = new School { Adress = "Кирпичная, 33", Number = 1001 };
+            School school2 = new School { Adress = "Мясницкая, 11", Number = 1002 };
+            School school3 = new School { Adress = "Шаболовская, 20", Number = 1003 };
 
             Cabinet cabinet1 = new Cabinet { Floor = 1, Number = 101, HasComputers = false, HasWhiteBoard = true, PlacesAmount = 30, School = school1 };
             Cabinet cabinet2 = new Cabinet { Floor = 1, Number = 102, HasComputers = false, HasWhiteBoard = true, PlacesAmount = 25, School = school1 };
@@ -102,6 +101,7 @@ namespace ScheduleManagement.Logic.Migrations
             context.Cabinets.AddOrUpdate(cabinet34);
             context.Cabinets.AddOrUpdate(cabinet35);
             context.Cabinets.AddOrUpdate(cabinet36);
+        
         }
     }
 }

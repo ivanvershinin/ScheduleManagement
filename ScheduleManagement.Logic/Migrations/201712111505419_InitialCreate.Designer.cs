@@ -13,7 +13,7 @@ namespace ScheduleManagement.Logic.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712082137420_InitialCreate"; }
+            get { return "201712111505419_InitialCreate"; }
         }
         
         string IMigrationMetadata.Source

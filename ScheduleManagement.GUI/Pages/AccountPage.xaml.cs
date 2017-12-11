@@ -30,7 +30,6 @@ namespace ScheduleManagement.GUI.Pages
             using (var unitOfWork = new UnitOfWork())
             {
                 CMBSchool.ItemsSource = unitOfWork.SRs.Items;
-                CMBSchool.ItemsSource = unitOfWork.SRs.Items;
                 unitOfWork.Complete();
             }
             CMBLesson.ItemsSource = lessons;
@@ -54,7 +53,13 @@ namespace ScheduleManagement.GUI.Pages
                     Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
                     Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
                     Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
-                    NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+                    var tutor = Storage.Default.CurrentID;
+                    if (!(unitOfWork.TCRs.CheckLesson(Storage.Default.LessonChosen, Storage.Default.DateChosen, tutor)))
+                    {
+                        NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+                    }
+                    else { MessageBox.Show("Вы уже забронировали " + Storage.Default.LessonChosen + " урок на эту дату"); };
+                    
                 }
             }
 

@@ -28,6 +28,7 @@ namespace ScheduleManagement.Logic.Migrations
                 c => new
                     {
                         ID = c.Int(nullable: false, identity: true),
+                        Number = c.Int(nullable: false),
                         Adress = c.String(),
                     })
                 .PrimaryKey(t => t.ID);

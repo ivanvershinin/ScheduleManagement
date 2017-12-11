@@ -28,13 +28,28 @@ namespace ScheduleManagement.Logic.Repository
 
         public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
         {
-
+            List<string> list = new List<string>();
             var r = _context.TutorCabinets
                   .Where(t => t.Date == date && t.TutorId == id).ToList();
+            var g = r.Join(_context.Cabinets,
+                first => first.CabinetId,
+                second => second.ID,
+                (first, second) => new { TutorCabinet = first, Cabinet = second });
+
+            
+            foreach (var item in g)
+            {
+                var a = Convert.ToString(item.TutorCabinet.LessonOrder) + " " + Convert.ToString(item.Cabinet.Number) + " " + Convert.ToString(item.Cabinet.School.Number);
+                list.Add(a);
+            }
             return r;
         }
 
-
+        public bool CheckLesson(int lesson, DateTime date, int tutor)
+        {
+            var r = _context.TutorCabinets.Any(t => t.Date == date.Date && t.LessonOrder == lesson && t.TutorId == tutor);
+            return r;
+        }
 
         public bool CheckData(string amount, DateTime? date, int? schoolNumber, int? lesson)
         {
