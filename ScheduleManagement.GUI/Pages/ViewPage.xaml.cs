@@ -26,17 +26,7 @@ namespace ScheduleManagement.GUI.Pages
         public ViewPage()
         {
             InitializeComponent();
-            using (var unitOfWork = new UnitOfWork())
-            {
-                var lessonord = Storage.Default.LessonChosen;
-                var datechosen = Storage.Default.DateChosen;
-                var schoolchosen = Storage.Default.SchoolAddress;
-                var studentsam = Storage.Default.StudentAmount;
-                var computers = Storage.Default.CompNeed;
-                var board = Storage.Default.BoardNeed;
-                DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
-                unitOfWork.Complete();
-            }
+            RefreshList();
         }
 
         private void Bind_Click(object sender, RoutedEventArgs e)
@@ -53,7 +43,9 @@ namespace ScheduleManagement.GUI.Pages
                     var datechosen = Storage.Default.DateChosen;
                     var lessonorder = Storage.Default.LessonChosen;
                     unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
+
                 }
+                RefreshList();
             }
         }
 
@@ -63,5 +55,22 @@ namespace ScheduleManagement.GUI.Pages
             //конец
 
         }
+
+        public void RefreshList()
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var lessonord = Storage.Default.LessonChosen;
+                var datechosen = Storage.Default.DateChosen;
+                var schoolchosen = Storage.Default.SchoolAddress;
+                var studentsam = Storage.Default.StudentAmount;
+                var computers = Storage.Default.CompNeed;
+                var board = Storage.Default.BoardNeed;
+                DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
+                unitOfWork.Complete();
+            }
+
+        }
+
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScheduleManagement.Logic.Model;
-
+using ScheduleManagement.Logic.QueryOutputClasses;
 
 namespace ScheduleManagement.Logic.Repository
 {
@@ -26,23 +26,15 @@ namespace ScheduleManagement.Logic.Repository
 
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
-        public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
+        public List<Schedule> FormSchedule(DateTime? date, int? id)
         {
-            List<string> list = new List<string>();
-            var r = _context.TutorCabinets
-                  .Where(t => t.Date == date && t.TutorId == id).ToList();
-            var g = r.Join(_context.Cabinets,
-                first => first.CabinetId,
-                second => second.ID,
-                (first, second) => new { TutorCabinet = first, Cabinet = second });
+            return _context.TutorCabinets
+                  .Where(t => t.Date == date && t.TutorId == id)
+                  .Join(_context.Cabinets, tutorCabinet => tutorCabinet.CabinetId, cabinet => cabinet.ID,
+                (tutorCabinet, cabinet) => new Schedule{ LessonOrder = tutorCabinet.LessonOrder, CabinetNumber = cabinet.Number, SchoolNumber = cabinet.School.Number}).OrderBy(l => l.LessonOrder).ToList();
 
             
-            foreach (var item in g)
-            {
-                var a = Convert.ToString(item.TutorCabinet.LessonOrder) + " " + Convert.ToString(item.Cabinet.Number) + " " + Convert.ToString(item.Cabinet.School.Number);
-                list.Add(a);
-            }
-            return r;
+        
         }
 
         public bool CheckLesson(int lesson, DateTime date, int tutor)
