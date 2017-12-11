@@ -32,9 +32,6 @@ namespace ScheduleManagement.Logic.Repository
                   .Where(t => t.Date == date && t.TutorId == id)
                   .Join(_context.Cabinets, tutorCabinet => tutorCabinet.CabinetId, cabinet => cabinet.ID,
                 (tutorCabinet, cabinet) => new Schedule{ LessonOrder = tutorCabinet.LessonOrder, CabinetNumber = cabinet.Number, SchoolNumber = cabinet.School.Number}).OrderBy(l => l.LessonOrder).ToList();
-
-            
-        
         }
 
         public bool CheckLesson(int lesson, DateTime date, int tutor)
@@ -74,13 +71,13 @@ namespace ScheduleManagement.Logic.Repository
             else
             return true;
         }
-        public IEnumerable<Cabinet> FindCabinets(string schoolAddress, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
+        public IEnumerable<Cabinet> FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
-            var one = _context.Schools.Single(x => x.Adress == schoolAddress).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
-            x.HasWhiteBoard == hasWhiteboard &&
-            x.PlacesAmount >= amount);
-            var two = one.Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
-            return two;
+                var one = _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
+                x.HasWhiteBoard == hasWhiteboard &&
+                x.PlacesAmount >= amount);
+                var two = one.Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+                return two;
         }
 
         public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)

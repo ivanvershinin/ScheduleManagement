@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ScheduleManagement.Logic;
+using ScheduleManagement.Logic.Model;
 
 namespace ScheduleManagement.GUI.Pages
 {
@@ -23,6 +25,11 @@ namespace ScheduleManagement.GUI.Pages
         public GuestViewPage()
         {
             InitializeComponent();
+            using (var unitOfWork = new UnitOfWork())
+            {
+                School.ItemsSource = unitOfWork.SRs.Items;
+                unitOfWork.Complete();
+            }
         }
 
         private void Clear_Click(object sender, RoutedEventArgs e)
@@ -34,6 +41,21 @@ namespace ScheduleManagement.GUI.Pages
         {
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
 
+        }
+
+        private void ViewSched_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void School_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {           
+            using (var unitOfWork = new UnitOfWork())
+            {
+                var sch = School.SelectedItem as School;
+                var schid = sch.ID;
+                Tutors.ItemsSource =  unitOfWork.SRs.FormTutors(schid);
+            }
         }
     }
 }

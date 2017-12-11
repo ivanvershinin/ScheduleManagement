@@ -49,17 +49,11 @@ namespace ScheduleManagement.GUI.Pages
                     Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
                     Storage.Default.LessonChosen = (int)lesson;
                     var school = CMBSchool.SelectedItem as School;
-                    Storage.Default.SchoolAddress = school.Adress;
+                    Storage.Default.SchoolNumber = school.Number;
                     Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
                     Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
                     Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
-                    var tutor = Storage.Default.CurrentID;
-                    if (!(unitOfWork.TCRs.CheckLesson(Storage.Default.LessonChosen, Storage.Default.DateChosen, tutor)))
-                    {
-                        NavigationService.Navigate(PagesStorage.Default.GetViewPage());
-                    }
-                    else { MessageBox.Show("Вы уже забронировали " + Storage.Default.LessonChosen + " урок на эту дату"); };
-                    
+                   NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
             }
 

@@ -42,9 +42,11 @@ namespace ScheduleManagement.GUI.Pages
                     var iduser = Storage.Default.CurrentID;
                     var datechosen = Storage.Default.DateChosen;
                     var lessonorder = Storage.Default.LessonChosen;
-                    unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
-
-                }
+                    if (!(unitOfWork.TCRs.CheckLesson(lessonorder, datechosen, iduser)))
+                    {
+                        unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
+                    } else { MessageBox.Show("Вы уже выбрали " + lessonorder + " урок на эту дату");};
+                } else { MessageBox.Show("Выберите кабинет"); };
                 RefreshList();
             }
         }
@@ -62,7 +64,7 @@ namespace ScheduleManagement.GUI.Pages
             {
                 var lessonord = Storage.Default.LessonChosen;
                 var datechosen = Storage.Default.DateChosen;
-                var schoolchosen = Storage.Default.SchoolAddress;
+                var schoolchosen = Storage.Default.SchoolNumber;
                 var studentsam = Storage.Default.StudentAmount;
                 var computers = Storage.Default.CompNeed;
                 var board = Storage.Default.BoardNeed;

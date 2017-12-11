@@ -11,7 +11,7 @@ namespace ScheduleManagement.Logic
         public int CurrentID { get; set; }
         public int LessonChosen { get; set; }
         public DateTime DateChosen { get; set; }
-        public string SchoolAddress { get; set; }
+        public int SchoolNumber { get; set; }
         public int StudentAmount { get; set; }
         public bool BoardNeed { get; set; }
         public bool CompNeed { get; set; }
