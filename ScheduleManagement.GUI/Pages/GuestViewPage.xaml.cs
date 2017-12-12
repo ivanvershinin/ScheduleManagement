@@ -45,17 +45,34 @@ namespace ScheduleManagement.GUI.Pages
 
         private void ViewSched_Click(object sender, RoutedEventArgs e)
         {
-
+            using (var unitOfWork = new UnitOfWork())
+            {
+                unitOfWork.TCRs.Message += ShowMessage;
+                var sch = School.SelectedItem as School;
+                var schid = sch?.ID;
+                var tut = Tutors.SelectedItem as Tutor;
+                var tutid = tut?.ID;
+                var date = Date.SelectedDate;
+                if (unitOfWork.SRs.CheckData(date, schid, tutid))
+                {
+                    DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(date, tutid);
+                }
+            }
         }
 
         private void School_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {           
             using (var unitOfWork = new UnitOfWork())
-            {
+            {               
                 var sch = School.SelectedItem as School;
-                var schid = sch.ID;
+                var schid = sch.ID;              
                 Tutors.ItemsSource =  unitOfWork.SRs.FormTutors(schid);
             }
+        }
+
+        private void ShowMessage (string message)
+        {
+            MessageBox.Show(message);
         }
     }
 }

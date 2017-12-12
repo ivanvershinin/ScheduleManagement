@@ -9,6 +9,9 @@ namespace ScheduleManagement.Logic.Repository
 {
     public class SchoolRepostory : Repository<School>
     {
+
+        public event Action<string> Message;
+
         public SchoolRepostory(Context context) : base(context)
         {
             Items = context.Schools.ToList();
@@ -16,19 +19,27 @@ namespace ScheduleManagement.Logic.Repository
 
         public List<Tutor> FormTutors (int schid)
         {
-            List<Tutor> list = new List<Tutor>();
-            var r = _context.Cabinets.Where(t => t.School.ID == schid)
-                .Join(_context.TutorCabinets,
-                cabinet => cabinet.ID,
-                tutorcabinet => tutorcabinet.CabinetId,
-                (cabinet, tutorcabinet) => new { tutorcabinet.Tutor })
-                .Distinct();
+            return _context.TutorCabinets.Where(t => t.Cabinet.School.ID == schid).Select(g => g.Tutor).Distinct().ToList();
+        }
 
-            foreach (var item in r)
+        public bool CheckData (DateTime? date, int? schid, int? tutorid)
+        {
+            if (date == null)
             {
-                var a = item.Tutor as Tutor;
-                list.Add(a);
-            } return list;
+                Message?.Invoke("Выберите дату");
+                return false;
+            }
+            else if (schid == null)
+            {
+                Message?.Invoke("Выберите учителя");
+                return false;
+            }
+            else if (tutorid == null)
+            {
+                Message?.Invoke("Выберите школу");
+                return false;
+            } 
+            else return true;     
         }
     }
 }

@@ -30,8 +30,8 @@
                     <DataGrid Name="DGShowSchedule" Margin="20, 10"  AutoGenerateColumns="False" IsReadOnly="True" FontSize="18" MaxWidth="560" Grid.Row="1" Grid.ColumnSpan="2">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Урок" Binding="{Binding Path=LessonOrder}" Width="1*"/>
-                            <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=CabinetNumber}" Width="1.5*"/>
-                            <DataGridTextColumn Header="Школа" Binding="{Binding Path=SchoolNumber}" Width="1.5*"/>
+                            <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=Cabinet.Number}" Width="1.5*"/>
+                            <DataGridTextColumn Header="Школа" Binding="{Binding Path=Cabinet.School.Number}" Width="1.5*"/>
                         </DataGrid.Columns>
 
                     </DataGrid>

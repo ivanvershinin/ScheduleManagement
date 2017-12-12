@@ -53,7 +53,7 @@
                                 <Style TargetType="CheckBox">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="False">
-                                            <Setter Property="IsChecked" Value="True" />
+                                            <Setter Property="IsChecked" Value="False" />
                                         </DataTrigger>
                                     </Style.Triggers>
                                 </Style>

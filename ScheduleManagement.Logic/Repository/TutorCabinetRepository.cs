@@ -26,12 +26,10 @@ namespace ScheduleManagement.Logic.Repository
 
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
-        public List<Schedule> FormSchedule(DateTime? date, int? id)
+        public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
         {
-            return _context.TutorCabinets
-                  .Where(t => t.Date == date && t.TutorId == id)
-                  .Join(_context.Cabinets, tutorCabinet => tutorCabinet.CabinetId, cabinet => cabinet.ID,
-                (tutorCabinet, cabinet) => new Schedule{ LessonOrder = tutorCabinet.LessonOrder, CabinetNumber = cabinet.Number, SchoolNumber = cabinet.School.Number}).OrderBy(l => l.LessonOrder).ToList();
+            return  _context.TutorCabinets.Where(t => t.Date == date && t.TutorId == id)
+                .OrderBy(l => l.LessonOrder).ToList();
         }
 
         public bool CheckLesson(int lesson, DateTime date, int tutor)
@@ -52,32 +50,46 @@ namespace ScheduleManagement.Logic.Repository
             {
                 Message?.Invoke("Введите число, большее 0");
                 return false;
-
             }
             else if (schoolNumber == null)
             {
                 Message?.Invoke("Выберите школу");
                 return false;
-
-
             }
             else if (lesson == null)
             {
                 Message?.Invoke("Выберите урок");
                 return false;
-
-
             }
             else
             return true;
         }
         public IEnumerable<Cabinet> FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
-                var one = _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
+            if (hasComputers == true && hasWhiteboard == true)
+            {
+                return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
                 x.HasWhiteBoard == hasWhiteboard &&
-                x.PlacesAmount >= amount);
-                var two = one.Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
-                return two;
+                x.PlacesAmount >= amount).Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+            }
+            else if (hasComputers == false && hasWhiteboard == true)
+            {
+                return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x =>
+                x.HasWhiteBoard == hasWhiteboard &&
+                x.PlacesAmount >= amount).Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+            }
+            else if (hasComputers == true && hasWhiteboard == false)
+            {
+                return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x => x.HasComputers == hasComputers &&
+                x.PlacesAmount >= amount).Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+            }
+            else
+            {
+                return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x =>
+               x.PlacesAmount >= amount).Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
+            }
+                
+                
         }
 
         public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)
