@@ -64,7 +64,6 @@
     <Compile Include="Model\Tutor.cs" />
     <Compile Include="Model\TutorCabinet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryOutputClasses\Schedule.cs" />
     <Compile Include="Repository\CabinetRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\SchoolRepostory.cs" />
