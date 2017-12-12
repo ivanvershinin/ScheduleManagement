@@ -34,9 +34,8 @@ namespace ScheduleManagement.GUI.Pages
             //запрос + нужна ли проверка чтобы один препод 2 ряда не привязывал кабинет !!!1
             using (var unitOfWork = new UnitOfWork())
             {
-                
-                var SelectedCabinet = DGShow.SelectedItem as Cabinet;
-                if (SelectedCabinet != null)
+
+                if (DGShow.SelectedItem is Cabinet SelectedCabinet)
                 {
                     var idcabinet = SelectedCabinet.ID;
                     var iduser = Storage.Default.CurrentID;
@@ -45,8 +44,10 @@ namespace ScheduleManagement.GUI.Pages
                     if (!(unitOfWork.TCRs.CheckLesson(lessonorder, datechosen, iduser)))
                     {
                         unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
-                    } else { MessageBox.Show("Вы уже выбрали " + lessonorder + " урок на эту дату");};
-                } else { MessageBox.Show("Выберите кабинет"); };
+                    }
+                    else { MessageBox.Show("Вы уже выбрали " + lessonorder + " урок на эту дату"); };
+                }
+                else { MessageBox.Show("Выберите кабинет"); };
                 RefreshList();
             }
         }

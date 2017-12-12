@@ -41,7 +41,6 @@
                         </Style>
                     </DataGrid.CellStyle>
                 </DataGrid>
-                <CheckBox Margin="10,3" Grid.Row="1" MaxWidth="560" FontSize="18">Забронировать на каждую неделю</CheckBox>
                 <Button Grid.Row="2" Grid.ColumnSpan="2" Name="Bind" Margin="10" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Click="Bind_Click" MaxWidth="560" FontSize="18" Height="50">Забронировать</Button>
             </Grid>
         </GroupBox>

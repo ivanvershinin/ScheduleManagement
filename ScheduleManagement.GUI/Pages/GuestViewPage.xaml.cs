@@ -34,7 +34,13 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-
+            //foreach (UIElement u in GVPG.Children)
+            //{
+            //    if (u is ComboBox)
+            //    {
+            //        (ComboBox)u. = null;
+            //    }
+            //}
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)

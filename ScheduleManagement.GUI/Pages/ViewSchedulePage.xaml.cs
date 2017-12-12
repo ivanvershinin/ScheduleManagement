@@ -1,4 +1,5 @@
 ﻿using ScheduleManagement.Logic;
+using ScheduleManagement.Logic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,13 @@ namespace ScheduleManagement.GUI.Pages
             }
         }
 
-        
+        private void DeleteBinding_Click(object sender, RoutedEventArgs e)
+        {
+            if (DGShowSchedule.SelectedItem is TutorCabinet SelectedCabinet)
+            {
+
+            }
+
+        }
     }
 }

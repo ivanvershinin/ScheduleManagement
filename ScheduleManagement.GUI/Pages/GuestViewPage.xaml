@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
 
         <GroupBox BorderBrush="#FF3C4A58" Header="Просмотр кабинетов" FontSize="18" MaxWidth="880">
-            <Grid>
+            <Grid Name="GVPG">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -45,7 +45,9 @@
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Урок" Binding="{Binding Path=LessonOrder}" Width="1*"/>
                         <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=Cabinet.Number}" Width="1.5*"/>
-                        <DataGridTextColumn Header="Школа" Binding="{Binding Path=Cabinet.School.Number}" Width="5*"/>
+                        <DataGridTextColumn Header="Школа" Binding="{Binding Path=Cabinet.School.Number}" Width="1.5*"/>
+                        <DataGridTextColumn Header="Адрес" Binding="{Binding Path=Cabinet.School.Adress}" Width="4*"/>
+
                     </DataGrid.Columns>
 
                 </DataGrid>

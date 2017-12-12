@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScheduleManagement.Logic.Model;
-using ScheduleManagement.Logic.QueryOutputClasses;
 
 namespace ScheduleManagement.Logic.Repository
 {

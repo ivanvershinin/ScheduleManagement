@@ -47,20 +47,9 @@
                             <ColumnDefinition Width="0.75*"/>
                             <ColumnDefinition/>
                         </Grid.ColumnDefinitions>
-                        <CheckBox Margin="5,0,0,0" Name="CBComputers" FontSize="18">Нужен компьютеный класс</CheckBox>
-                        <CheckBox Margin="5,0,0,0" Name="CBWhiteBoard" Grid.Row="1" FontSize="18">Нужна доска
-                            <CheckBox.Style>
-                                <Style TargetType="CheckBox">
-                                    <Style.Triggers>
-                                        <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="False">
-                                            <Setter Property="IsChecked" Value="False" />
-                                        </DataTrigger>
-                                    </Style.Triggers>
-                                </Style>
-                            </CheckBox.Style>
-
-                        </CheckBox>
-                        <TextBox MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,5" >
+                        <CheckBox Margin="5,0,0,0" Name="CBComputers" FontSize="18">Нужен компьютерный класс</CheckBox>
+                        <CheckBox Margin="5,0,0,0" Name="CBWhiteBoard" Grid.Row="1" FontSize="18">Нужна доска </CheckBox>
+                        <TextBox MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,5" >Сколько учеников?
                             <TextBox.Style>
                                 <Style TargetType="TextBox">
                                     <Style.Triggers>
@@ -73,13 +62,13 @@
                         </TextBox>
                     </Grid>
                 </Expander>
-                <Button Height="40" FontSize="18" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewCabinets" Click="ViewCabinets_Click" MaxWidth="420" >Просмотр</Button>
+                <Button Height="40" FontSize="18" Grid.Row="4" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewCabinets" Click="ViewCabinets_Click" MaxWidth="420" >Найти кабинеты</Button>
 
             </Grid>
 
 
       </GroupBox>
-        <GroupBox Header="Посмотрите свое расписание" Grid.Row="1" FontSize="18" MaxWidth="880">
+        <GroupBox Header="Посмотрите свое расписание и удалите записи" Grid.Row="1" FontSize="18" MaxWidth="880">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -88,7 +77,7 @@
                     <ColumnDefinition Width="0.75*"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button Height="40" MaxWidth="420" FontSize="18" Grid.Row="1" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewSchedule" Click="ViewSchedule_Click">Просмотр</Button>
+                <Button Height="40" MaxWidth="420" FontSize="18" Grid.Row="1" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewSchedule" Click="ViewSchedule_Click">Просмотреть</Button>
 
             </Grid>
 
