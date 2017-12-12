@@ -38,6 +38,7 @@ namespace ScheduleManagement.GUI.Pages
                     Storage.Default.CurrentID = unitOfWork.TRs.SaveLogin(TBEmail.Text);
                     NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
                 }
+                unitOfWork.Complete();
             }
         }
 

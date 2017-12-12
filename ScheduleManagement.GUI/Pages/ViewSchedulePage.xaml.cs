@@ -34,22 +34,43 @@ namespace ScheduleManagement.GUI.Pages
         }
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
-        {
-           
-            using (var unitOfWork = new UnitOfWork())
-            {
-                var id = Storage.Default.CurrentID;
-                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(DP.SelectedDate, id);
-            }
+        {       
+            var id = Storage.Default.CurrentID;
+            ShowSchedule(DP.SelectedDate, id);
         }
 
         private void DeleteBinding_Click(object sender, RoutedEventArgs e)
         {
             if (DGShowSchedule.SelectedItem is TutorCabinet SelectedCabinet)
             {
-
+                using (var unitOfWork = new UnitOfWork())
+                {
+                    unitOfWork.TCRs.Message += MessageShow;
+                    var tutcab = DGShowSchedule.SelectedItem as TutorCabinet;
+                    var cabid = tutcab.CabinetId;
+                    var date = tutcab.Date;
+                    var lesson = tutcab.LessonOrder;
+                    unitOfWork.TCRs.DeleteBindedLesson(cabid, date, lesson);
+                    unitOfWork.Complete();
+                    ShowSchedule(date, tutcab.TutorId);
+                }
+                
             }
 
+        }
+
+        private void MessageShow(string message)
+        {
+            MessageBox.Show(message);
+        }
+
+        private void ShowSchedule(DateTime? date, int tutorid)
+        {
+            using (var unitOfWork = new UnitOfWork())
+            {
+                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(date, tutorid);
+                unitOfWork.Complete();
+            }
         }
     }
 }

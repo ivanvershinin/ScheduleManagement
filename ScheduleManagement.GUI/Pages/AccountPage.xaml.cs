@@ -48,13 +48,13 @@ namespace ScheduleManagement.GUI.Pages
                 {
                     Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
                     Storage.Default.LessonChosen = (int)lesson;
-                    var school = CMBSchool.SelectedItem as School;
                     Storage.Default.SchoolNumber = school.Number;
                     Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
                     Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
                     Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
                    NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
+                unitOfWork.Complete();
             }
 
 
@@ -98,7 +98,6 @@ namespace ScheduleManagement.GUI.Pages
         private void CMBLesson_Selected(object sender, RoutedEventArgs e)
         {
             lesson = CMBLesson.SelectedItem as int?;
-
         }
     }
 }

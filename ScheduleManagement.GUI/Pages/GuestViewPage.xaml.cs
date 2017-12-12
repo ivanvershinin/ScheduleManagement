@@ -62,7 +62,12 @@ namespace ScheduleManagement.GUI.Pages
                 if (unitOfWork.SRs.CheckData(date, schid, tutid))
                 {
                     DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(date, tutid);
+                    if (DGShowSchedule.Items.Count == 1)
+                    {
+                        MessageBox.Show("У данного преподавателя нет уроков на это число");
+                    }
                 }
+                unitOfWork.Complete();
             }
         }
 
@@ -73,7 +78,8 @@ namespace ScheduleManagement.GUI.Pages
                 var sch = School.SelectedItem as School;
                 var schid = sch.ID;              
                 Tutors.ItemsSource =  unitOfWork.SRs.FormTutors(schid);
-            }
+                unitOfWork.Complete();
+            }           
         }
 
         private void ShowMessage (string message)

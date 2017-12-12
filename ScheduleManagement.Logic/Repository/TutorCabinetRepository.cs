@@ -15,13 +15,10 @@ namespace ScheduleManagement.Logic.Repository
         public TutorCabinetRepository(Context context) : base(context)
         {
             Items = context.TutorCabinets.ToList();
-
-
         }
         static int intx;
 
         public Func<DateTime?, bool> CheckDate = (x => x != null && x >= DateTime.Today);
-
 
         public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
 
@@ -97,7 +94,15 @@ namespace ScheduleManagement.Logic.Repository
             {
                 _context.TutorCabinets.Add(new TutorCabinet { CabinetId = idcab, Date = date, LessonOrder = lessonord , TutorId = idtut});
                 _context.SaveChanges();
+                Message?.Invoke("Кабинет успешно забронирован");
             }
+        }
+
+        public void DeleteBindedLesson (int cabinetid, DateTime date, int lessonorder)
+        {
+            _context.TutorCabinets.Remove(_context.TutorCabinets.First(t => t.CabinetId == cabinetid && t.Date == date && t.LessonOrder == lessonorder));
+            _context.SaveChanges();
+            Message?.Invoke("Бронь кабинета успешно удалена");
         }
     }
 }

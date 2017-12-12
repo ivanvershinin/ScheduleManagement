@@ -37,6 +37,7 @@ namespace ScheduleManagement.GUI.Pages
 
                 if (DGShow.SelectedItem is Cabinet SelectedCabinet)
                 {
+                    unitOfWork.TCRs.Message += MessageShow;
                     var idcabinet = SelectedCabinet.ID;
                     var iduser = Storage.Default.CurrentID;
                     var datechosen = Storage.Default.DateChosen;
@@ -49,6 +50,7 @@ namespace ScheduleManagement.GUI.Pages
                 }
                 else { MessageBox.Show("Выберите кабинет"); };
                 RefreshList();
+                unitOfWork.Complete();
             }
         }
 
@@ -75,5 +77,9 @@ namespace ScheduleManagement.GUI.Pages
 
         }
 
+        private void MessageShow(string message)
+        {
+            MessageBox.Show(message);
+        }
     }
 }

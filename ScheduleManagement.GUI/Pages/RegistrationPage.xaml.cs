@@ -47,7 +47,7 @@ namespace ScheduleManagement.GUI.Pages
                     TBEmail.Clear();
                     PBPassword.Clear();
                 }
-
+                unitOfWork.Complete();
             }
         }
 
