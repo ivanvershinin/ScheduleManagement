@@ -60,6 +60,7 @@ namespace ScheduleManagement.Logic.Repository
             else
             return true;
         }
+
         public IEnumerable<Cabinet> FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
             if (hasComputers == true && hasWhiteboard == true)
@@ -84,8 +85,6 @@ namespace ScheduleManagement.Logic.Repository
                 return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x =>
                x.PlacesAmount >= amount).Where(l => !_context.TutorCabinets.Any(l1 => l1.CabinetId == l.ID && l1.Date == date && l1.LessonOrder == lesson));
             }
-                
-                
         }
 
         public void BindLesson(int idcab, int idtut, DateTime date, int lessonord)

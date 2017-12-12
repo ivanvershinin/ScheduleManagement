@@ -10,7 +10,5 @@ namespace ScheduleManagement.Logic.Interfaces
     interface ICabinetRepository
     {
         IEnumerable<Cabinet> GetSuitableCabinets(bool hasComputers, bool hasWhiteBoard, int studentsAmount, int schoolNumber);
-
-
     }
 }

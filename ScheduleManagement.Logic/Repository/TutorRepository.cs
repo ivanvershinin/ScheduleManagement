@@ -15,16 +15,12 @@ namespace ScheduleManagement.Logic.Repository
         public event Action<string> Message;
         public  EmailCallback GotEmail;
 
-        //месте4ко для делегата
-
         public TutorRepository(Context context) : base(context)
         {
             Items = context.Tutors.ToList();
         }
 
-
         Authorization authorization = new Authorization();
-
 
         public bool EmailExists(string email)
         {
@@ -41,7 +37,6 @@ namespace ScheduleManagement.Logic.Repository
         {
             _context.Set<Tutor>().Add(tutor);
         }
-
 
         public bool CheckRegistration(string name, string surname, string email, string password)
         {
@@ -68,7 +63,6 @@ namespace ScheduleManagement.Logic.Repository
 
                     return true;
                 }
-
             }
         }
 
@@ -102,12 +96,9 @@ namespace ScheduleManagement.Logic.Repository
             }
         }
 
-
         public int SaveLogin(string email)
         {
             return _context.Set<Tutor>().First(x => x.Email == email).ID;
         }
-
-
     }
 }

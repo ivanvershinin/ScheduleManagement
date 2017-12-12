@@ -30,7 +30,6 @@ namespace ScheduleManagement.GUI.Pages
         {
             NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
             //все хорошо и пусто
-
         }
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
@@ -53,10 +52,8 @@ namespace ScheduleManagement.GUI.Pages
                     unitOfWork.TCRs.DeleteBindedLesson(cabid, date, lesson);
                     unitOfWork.Complete();
                     ShowSchedule(date, tutcab.TutorId);
-                }
-                
+                }               
             }
-
         }
 
         private void MessageShow(string message)

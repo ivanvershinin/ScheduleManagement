@@ -32,14 +32,12 @@ namespace ScheduleManagement.GUI.Pages
         {
             NavigationService.Navigate(PagesStorage.Default.GetLoginPage());
             //конец
-
         }
 
         private void View_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetGuestViewPage());
             //конец
-
         }
 
         private void Registration_Click(object sender, RoutedEventArgs e)

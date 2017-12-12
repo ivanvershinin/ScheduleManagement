@@ -84,7 +84,6 @@ namespace ScheduleManagement.GUI.Pages
 
         }
 
-
         public void ShowMessage(string message)
         {
             MessageBox.Show(message);

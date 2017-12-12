@@ -31,10 +31,8 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Bind_Click(object sender, RoutedEventArgs e)
         {
-            //запрос + нужна ли проверка чтобы один препод 2 ряда не привязывал кабинет !!!1
             using (var unitOfWork = new UnitOfWork())
             {
-
                 if (DGShow.SelectedItem is Cabinet SelectedCabinet)
                 {
                     unitOfWork.TCRs.Message += MessageShow;
@@ -58,7 +56,6 @@ namespace ScheduleManagement.GUI.Pages
         {
             NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
             //конец
-
         }
 
         public void RefreshList()
@@ -74,7 +71,6 @@ namespace ScheduleManagement.GUI.Pages
                 DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
                 unitOfWork.Complete();
             }
-
         }
 
         private void MessageShow(string message)

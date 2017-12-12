@@ -16,7 +16,5 @@ namespace ScheduleManagement.Logic
             var hash = md5.ComputeHash(Encoding.ASCII.GetBytes(password));
             return Convert.ToBase64String(hash);
         }
-
-  
     }
 }

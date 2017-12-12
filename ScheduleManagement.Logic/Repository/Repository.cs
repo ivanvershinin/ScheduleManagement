@@ -16,6 +16,5 @@ namespace ScheduleManagement.Logic.Repository
         }
 
         public List<T> Items;
-
     }
 }

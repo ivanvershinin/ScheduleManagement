@@ -46,9 +46,9 @@ namespace ScheduleManagement.GUI.Pages
         {
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
             //конец
-
         }
-         public void ShowMessage(string message)
+
+        public void ShowMessage(string message)
         {
             MessageBox.Show(message);
         }
