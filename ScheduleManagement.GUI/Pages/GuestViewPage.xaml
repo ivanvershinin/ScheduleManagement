@@ -41,7 +41,7 @@
                 <Button  Name="ViewSched" Grid.Row="3"  Grid.Column="1" Height="30" MaxWidth="300" Margin="5" Click="ViewSched_Click">Просмотреть</Button>
 
 
-                <DataGrid Name="DGShowSchedule" Margin="20, 10"   Grid.ColumnSpan="2" Grid.Row="4" FontSize="18" Width="560" AutoGenerateColumns="False">
+                <DataGrid Name="DGShowSchedule" Margin="20, 10"   Grid.ColumnSpan="2" Grid.Row="4" FontSize="18" Width="560" AutoGenerateColumns="False" IsReadOnly="True">
                     <DataGrid.Columns>
                         <DataGridTextColumn Header="Урок" Binding="{Binding Path=LessonOrder}" Width="1*"/>
                         <DataGridTextColumn Header="Кaбинет" Binding="{Binding Path=Cabinet.Number}" Width="1.5*"/>

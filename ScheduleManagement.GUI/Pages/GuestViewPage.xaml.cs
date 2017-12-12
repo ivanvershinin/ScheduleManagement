@@ -53,7 +53,7 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
-                unitOfWork.TCRs.Message += ShowMessage;
+                unitOfWork.SRs.Message += ShowMessage;
                 var sch = School.SelectedItem as School;
                 var schid = sch?.ID;
                 var tut = Tutors.SelectedItem as Tutor;
@@ -62,7 +62,7 @@ namespace ScheduleManagement.GUI.Pages
                 if (unitOfWork.SRs.CheckData(date, schid, tutid))
                 {
                     DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(date, tutid);
-                    if (DGShowSchedule.Items.Count == 1)
+                    if (DGShowSchedule.ItemsSource == null)
                     {
                         MessageBox.Show("У данного преподавателя нет уроков на это число");
                     }
