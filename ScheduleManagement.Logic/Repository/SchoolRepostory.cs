@@ -31,12 +31,12 @@ namespace ScheduleManagement.Logic.Repository
             }
             else if (schid == null)
             {
-                Message?.Invoke("Выберите учителя");
+                Message?.Invoke("Выберите школу");
                 return false;
             }
             else if (tutorid == null)
             {
-                Message?.Invoke("Выберите школу");
+                Message?.Invoke("Выберите учителя");
                 return false;
             } 
             else return true;     
