@@ -49,13 +49,17 @@
                         </Grid.ColumnDefinitions>
                         <CheckBox Margin="5,0,0,0" Name="CBComputers" FontSize="18">Нужен компьютерный класс</CheckBox>
                         <CheckBox Margin="5,0,0,0" Name="CBWhiteBoard" Grid.Row="1" FontSize="18">Нужна доска </CheckBox>
-                        <TextBox MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,5" >Сколько учеников?
+                        <TextBox MaxWidth="420" Height="30" FontSize="18" Grid.Column="1" GotFocus="AmountOfStudents_GotFocus" Name="TBAmountOfStudents" LostFocus="AmountOfStudents_LostFocus" Margin="0,0,5,5" >
                             <TextBox.Style>
                                 <Style TargetType="TextBox">
                                     <Style.Triggers>
                                         <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="False">
                                             <Setter Property="Text" Value="25" />
                                         </DataTrigger>
+                                        <DataTrigger Binding="{Binding ElementName=Details, Path=IsExpanded}" Value="True">
+                                            <Setter Property="Text" Value="Сколько учеников?" />
+                                        </DataTrigger>
+
                                     </Style.Triggers>
                                 </Style>
                             </TextBox.Style>

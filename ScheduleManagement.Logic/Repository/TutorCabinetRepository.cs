@@ -10,17 +10,16 @@ namespace ScheduleManagement.Logic.Repository
     public class TutorCabinetRepository : Repository<TutorCabinet>
         
     {
-
         public event Action<string> Message;
+
         public TutorCabinetRepository(Context context) : base(context)
         {
             Items = context.TutorCabinets.ToList();
         }
-        static int intx;
-
+       
         public Func<DateTime?, bool> CheckDate = (x => x != null && x >= DateTime.Today);
 
-        public Func<string, bool> CheckAmount = (x => int.TryParse(x, out intx) && intx > 0);
+        public Func<string, bool> CheckAmount = (x => int.TryParse(x, out int intx) && intx > 0);
 
         public List<TutorCabinet> FormSchedule(DateTime? date, int? id)
         {

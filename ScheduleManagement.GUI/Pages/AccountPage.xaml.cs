@@ -46,13 +46,13 @@ namespace ScheduleManagement.GUI.Pages
 
                 if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate, school?.ID, lesson))
                 {
-                    //Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
-                    //Storage.Default.LessonChosen = (int)lesson;
-                    //Storage.Default.SchoolNumber = school.Number;
-                    //Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
-                    //Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
-                    //Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
-                   NavigationService.Navigate(PagesStorage.Default.GetViewPage());
+                    Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
+                    Storage.Default.LessonChosen = (int)lesson;
+                    Storage.Default.SchoolNumber = school.Number;
+                    Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
+                    Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
+                    Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
+                    NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
                 unitOfWork.Complete();
             }

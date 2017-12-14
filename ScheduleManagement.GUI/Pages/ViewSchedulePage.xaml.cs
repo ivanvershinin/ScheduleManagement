@@ -45,15 +45,17 @@ namespace ScheduleManagement.GUI.Pages
                 using (var unitOfWork = new UnitOfWork())
                 {
                     unitOfWork.TCRs.Message += MessageShow;
-                    var tutcab = DGShowSchedule.SelectedItem as TutorCabinet;
-                    var cabid = tutcab.CabinetId;
-                    var date = tutcab.Date;
-                    var lesson = tutcab.LessonOrder;
-                    unitOfWork.TCRs.DeleteBindedLesson(cabid, date, lesson);
+                    unitOfWork.TCRs.DeleteBindedLesson(SelectedCabinet.CabinetId, SelectedCabinet.Date, SelectedCabinet.LessonOrder);
                     unitOfWork.Complete();
-                    ShowSchedule(date, tutcab.TutorId);
+
+                    ShowSchedule(SelectedCabinet.Date, SelectedCabinet.TutorId);
                 }               
             }
+            else
+            {
+                MessageShow("Выберите запись");
+            }
+
         }
 
         private void MessageShow(string message)
@@ -65,8 +67,9 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
-                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(date, tutorid);
+                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule( date, tutorid);
                 unitOfWork.Complete();
+
             }
         }
     }
