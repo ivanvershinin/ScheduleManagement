@@ -22,12 +22,11 @@ namespace ScheduleManagement.GUI
     /// </summary>
     public partial class MainWindow : Window
     {
-        StartingPage startingPage = PagesStorage.Default.GetStartingPage();
 
         public MainWindow()
         {
             InitializeComponent();
-            Frame.Navigate(startingPage);           
+            Frame.Navigate(PagesStorage.Default.GetStartingPage());           
         }
     }
 }

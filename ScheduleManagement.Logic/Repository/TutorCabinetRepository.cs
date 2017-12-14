@@ -63,6 +63,7 @@ namespace ScheduleManagement.Logic.Repository
 
         public IEnumerable<Cabinet> FindCabinets(int? schoolNumber, int? lesson, DateTime? date, int? amount, bool? hasComputers, bool? hasWhiteboard)
         {
+     
             if (hasComputers == true && hasWhiteboard == true)
             {
                 return _context.Schools.Single(x => x.Number == schoolNumber).Cabinets.FindAll(x => x.HasComputers == hasComputers &&

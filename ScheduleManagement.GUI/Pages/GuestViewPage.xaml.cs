@@ -34,13 +34,10 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            //foreach (UIElement u in GVPG.Children)
-            //{
-            //    if (u is ComboBox)
-            //    {
-            //        (ComboBox)u. = null;
-            //    }
-            //}
+            Tutors.ItemsSource = null;
+            School.SelectedItem = null;
+            Date.SelectedDate = null;
+            DGShowSchedule.ItemsSource = null;
         }
 
         private void Return_Click(object sender, RoutedEventArgs e)
@@ -72,14 +69,16 @@ namespace ScheduleManagement.GUI.Pages
         }
 
         private void School_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {           
-            using (var unitOfWork = new UnitOfWork())
-            {               
-                var sch = School.SelectedItem as School;
-                var schid = sch.ID;              
-                Tutors.ItemsSource =  unitOfWork.SRs.FormTutors(schid);
-                unitOfWork.Complete();
-            }           
+        {    if (School.SelectedItem is School)
+            {
+                using (var unitOfWork = new UnitOfWork())
+                {
+                    var sch = School.SelectedItem as School;
+                    var schid = sch.ID;
+                    Tutors.ItemsSource = unitOfWork.SRs.FormTutors(schid);
+                    unitOfWork.Complete();
+                }
+            }
         }
 
         private void ShowMessage (string message)
