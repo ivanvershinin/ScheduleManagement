@@ -33,9 +33,9 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
+                unitOfWork.TCRs.Message += MessageShow;
                 if (DGShow.SelectedItem is Cabinet SelectedCabinet)
                 {
-                    unitOfWork.TCRs.Message += MessageShow;
                     var idcabinet = SelectedCabinet.ID;
                     var iduser = Storage.Default.CurrentID;
                     var datechosen = Storage.Default.DateChosen;
@@ -48,7 +48,6 @@ namespace ScheduleManagement.GUI.Pages
                 }
                 else { MessageBox.Show("Выберите кабинет"); };
                 RefreshList();
-                unitOfWork.Complete();
             }
         }
 
@@ -69,7 +68,6 @@ namespace ScheduleManagement.GUI.Pages
                 var computers = Storage.Default.CompNeed;
                 var board = Storage.Default.BoardNeed;
                 DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
-                unitOfWork.Complete();
             }
         }
 

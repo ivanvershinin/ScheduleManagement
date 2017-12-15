@@ -28,14 +28,12 @@ namespace ScheduleManagement.GUI.Pages
         }
         private void ReturnToAccount_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
-            //все хорошо и пусто
+            NavigationService.Navigate(PagesStorage.Default.GetAccountPage()); //все хорошо и пусто
         }
 
         private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {       
-            var id = Storage.Default.CurrentID;
-            ShowSchedule(DP.SelectedDate, id);
+            ShowSchedule(DP.SelectedDate, Storage.Default.CurrentID);
         }
 
         private void DeleteBinding_Click(object sender, RoutedEventArgs e)
@@ -46,8 +44,7 @@ namespace ScheduleManagement.GUI.Pages
                 {
                     unitOfWork.TCRs.Message += MessageShow;
                     unitOfWork.TCRs.DeleteBindedLesson(SelectedCabinet.CabinetId, SelectedCabinet.Date, SelectedCabinet.LessonOrder);
-                    unitOfWork.Complete();
-
+                    //unitOfWork.Complete();
                     ShowSchedule(SelectedCabinet.Date, SelectedCabinet.TutorId);
                 }               
             }
@@ -67,7 +64,7 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
-                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule( date, tutorid);
+                DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(date, tutorid);
                 unitOfWork.Complete();
 
             }
