@@ -59,7 +59,7 @@ namespace ScheduleManagement.GUI.Pages
                 if (unitOfWork.SRs.CheckData(date, schid, tutid))
                 {
                     DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(date, tutid);
-                    if (DGShowSchedule.ItemsSource == null)
+                    if (DGShowSchedule.Items.Count == 0)
                     {
                         MessageBox.Show("У данного преподавателя нет уроков на это число");
                     }
