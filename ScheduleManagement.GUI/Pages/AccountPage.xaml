@@ -11,8 +11,8 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition  Height="*"/>
-            <RowDefinition Height="*" />
+            <RowDefinition  Height="*" MaxHeight="120"/>
+            <RowDefinition Height="*" MaxHeight="120"/>
 
         </Grid.RowDefinitions>
         <GroupBox Header="Забронируйте кабинет" FontSize="18" MaxWidth="880">
@@ -73,18 +73,7 @@
 
       </GroupBox>
         <GroupBox Header="Посмотрите свое расписание и удалите записи" Grid.Row="1" FontSize="18" MaxWidth="880">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="0.75*"/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Button Height="40" MaxWidth="420" FontSize="18" Grid.Row="1" Margin="5" Grid.ColumnSpan="2" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewSchedule" Click="ViewSchedule_Click">Просмотреть</Button>
-
-            </Grid>
-
+            <Button Style="{StaticResource MyButtonStyle}" Height="40" MaxWidth="420" FontSize="18" Grid.Row="1" Margin="5" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" Name="ViewSchedule" Click="ViewSchedule_Click">Просмотреть</Button>
         </GroupBox>
         <Button  Style="{StaticResource MyButtonStyle}" Height="50" FontSize="18" Grid.Row="2"  Name="Return" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click" MaxWidth="420" Margin="10,40,10,10">Выйти
         </Button>

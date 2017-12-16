@@ -65,7 +65,8 @@ namespace ScheduleManagement.GUI.Pages
             using (var unitOfWork = new UnitOfWork())
             {
                 DGShowSchedule.ItemsSource = unitOfWork.TCRs.FormSchedule(date, tutorid);
-                unitOfWork.Complete();
+                if (DGShowSchedule.Items.Count == 0)
+                    MessageBox.Show("На эту дату занятий нет");
 
             }
         }

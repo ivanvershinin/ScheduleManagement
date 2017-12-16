@@ -59,6 +59,7 @@ namespace ScheduleManagement.GUI.Pages
                 if (DGShow.Items.Count == 0)
                     MessageBox.Show("Кабинетов, удовлетворящих Вашим условиям, нет.");
 
+
             }
         }
 

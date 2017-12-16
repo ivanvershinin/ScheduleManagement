@@ -32,10 +32,10 @@
                     <ColumnDefinition/>
 
                 </Grid.ColumnDefinitions>
-                <Label FontSize="18" Grid.Column="1" >Выберите школу:</Label>
-                <Label FontSize="18" >Выберите дату:</Label>
-                <Label FontSize="18" Grid.Column="2">Выберите учителя:</Label>
-                <ComboBox  Grid.Row="1" Name="Tutors" Grid.Column="2" Height="30" MaxWidth="150" DisplayMemberPath="Surname"/>
+                <Label FontSize="18" Grid.Column="1" HorizontalAlignment="Center">Выберите школу:</Label>
+                <Label FontSize="18" HorizontalAlignment="Center">Выберите дату:</Label>
+                <Label FontSize="18" Grid.Column="2" HorizontalAlignment="Center">Выберите учителя:</Label>
+                <ComboBox  Grid.Row="1" Name="Tutors" Grid.Column="2" Height="30" MaxWidth="150" DisplayMemberPath="Surname" />
                 <ComboBox Grid.Row="1" Name="School" Grid.Column="1" Height="30" MaxWidth="150" Margin="5" SelectionChanged="School_SelectionChanged" DisplayMemberPath="Number"/>
                 <DatePicker Grid.Row="1"  Name="Date"  Grid.Column="0" Height="30" MaxWidth="150" Margin="5"/>
                 <Button  Style="{StaticResource MyButtonStyle}" Name="ViewSched" Grid.Row="2"  Grid.ColumnSpan="3" Height="40" MaxWidth="300" Margin="5" Click="ViewSched_Click" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5">Просмотреть</Button>

@@ -60,6 +60,9 @@ namespace ScheduleManagement.GUI.Pages
                 using (var unitOfWork = new UnitOfWork())
                 {
                     Tutors.ItemsSource = unitOfWork.SRs.FormTutors(school.ID);
+                    if (Tutors.Items.Count == 0)
+                        MessageBox.Show("В данной школе нет зарегистрированных преподавателей");
+
                 }
             }
         }
