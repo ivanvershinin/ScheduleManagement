@@ -8,12 +8,10 @@ using ScheduleManagement.Logic.Interfaces;
 
 namespace ScheduleManagement.Logic.Repository
 {
-    public delegate int EmailCallback(string email);
 
     public class TutorRepository : Repository<Tutor>, ITutorRepository
     {
         public event Action<string> Message;
-        public  EmailCallback GotEmail;
 
         public TutorRepository(Context context) : base(context)
         {
@@ -45,28 +43,31 @@ namespace ScheduleManagement.Logic.Repository
                 Message?.Invoke("Введите данные");
                 return false;
             }
-            else
-            {
-                if (EmailExists(email))
+            else   if (EmailExists(email))
                 {
                     Message?.Invoke("Пользователь с таким email уже зарегистрирован в системе");
                     return false;
                 }
                 else
                 {
-                    string passwordHash = authorization.CalculateHash(password);
-                    Tutor tutor = new Tutor()
-                    { Name = name, Surname = surname, Email = email, Password = passwordHash };
-                    AddTutor(tutor);
-                    _context.SaveChanges();
-                    Message?.Invoke("Вы успешно зарегистрированы");
-
+                    Register(name, surname, email, password);
                     return true;
                 }
-            }
+            
         }
 
-        
+        public void Register(string name, string surname, string email, string password)
+        {
+            string passwordHash = authorization.CalculateHash(password);
+            Tutor tutor = new Tutor()
+            { Name = name, Surname = surname, Email = email, Password = passwordHash };
+            AddTutor(tutor);
+            _context.SaveChanges();
+            Message?.Invoke("Вы успешно зарегистрированы");
+
+        }
+
+
         public bool CheckLogin(string email, string password)
         {
             if (String.IsNullOrWhiteSpace(email) || String.IsNullOrWhiteSpace(password))
@@ -74,26 +75,23 @@ namespace ScheduleManagement.Logic.Repository
                 Message?.Invoke("Введите данные");
                 return false;
             }
-            else
-            {
-                if (!EmailExists(email))
+            else   if (!EmailExists(email))
                 {
                     Message?.Invoke("Почта не зарегистрирована в системе");
                     return false;
                 }
-                else
-                {
-                    if (!PasswordIsValid(email, password))
+            else if (!PasswordIsValid(email, password))
                     {
                         Message?.Invoke("Введен неверный пароль");
                         return false;
                     }
-                    else
+             else
                     {
-                        return true;
+                Storage.Default.CurrentID = SaveLogin(email);
+                return true;
                     }
-                }
-            }
+                
+            
         }
 
         public int SaveLogin(string email)

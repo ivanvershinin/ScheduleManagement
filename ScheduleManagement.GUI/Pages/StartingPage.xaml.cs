@@ -24,8 +24,6 @@ namespace ScheduleManagement.GUI.Pages
         public StartingPage()
         {
             InitializeComponent();
-            //Context _context = new Context();
-            //_context.Cabinets.FirstOrDefault(t => t.ID == 1);
         }
 
         private void Login_Click(object sender, RoutedEventArgs e)
@@ -45,5 +43,6 @@ namespace ScheduleManagement.GUI.Pages
             NavigationService.Navigate(PagesStorage.Default.GetRegistrationPage());
             //конец
         }
+
     }
 }

@@ -40,13 +40,8 @@ namespace ScheduleManagement.GUI.Pages
             {
                 unitOfWork.TRs.Message += ShowMessage;
                 if (unitOfWork.TRs.CheckRegistration(TBName.Text, TBSurname.Text, TBEmail.Text, PBPassword.Password))
-                {
-                    TBName.Clear();
-                    TBSurname.Clear();
-                    TBEmail.Clear();
-                    PBPassword.Clear();
-                }
-                unitOfWork.Complete();
+                Clear();
+                
             }
         }
 
@@ -54,5 +49,14 @@ namespace ScheduleManagement.GUI.Pages
         {
             MessageBox.Show(message);
         }
+
+        public void Clear()
+        {
+            TBName.Clear();
+            TBSurname.Clear();
+            TBEmail.Clear();
+            PBPassword.Clear();
+        }
     }
+
 }

@@ -43,23 +43,24 @@ namespace ScheduleManagement.GUI.Pages
             using (var unitOfWork = new UnitOfWork())
             {
                 unitOfWork.TCRs.Message += ShowMessage;
-
                 if (unitOfWork.TCRs.CheckData(TBAmountOfStudents.Text, DP.SelectedDate, school?.ID, lesson))
                 {
-                    Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
-                    Storage.Default.LessonChosen = (int)lesson;
-                    Storage.Default.SchoolNumber = school.Number;
-                    Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
-                    Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
-                    Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
+                    UpdateSession();
                     NavigationService.Navigate(PagesStorage.Default.GetViewPage());
                 }
-                unitOfWork.Complete();
             }
-
-
         }
 
+        private void UpdateSession()
+        {
+            Storage.Default.DateChosen = (DateTime)DP.SelectedDate;
+            Storage.Default.LessonChosen = (int)lesson;
+            Storage.Default.SchoolNumber = school.Number;
+            Storage.Default.StudentAmount = int.Parse(TBAmountOfStudents.Text);
+            Storage.Default.BoardNeed = (bool)CBWhiteBoard.IsChecked;
+            Storage.Default.CompNeed = (bool)CBComputers.IsChecked;
+
+        }
         private void ViewSchedule_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetViewSchedulePage());

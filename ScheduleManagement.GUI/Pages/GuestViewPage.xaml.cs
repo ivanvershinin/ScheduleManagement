@@ -28,17 +28,9 @@ namespace ScheduleManagement.GUI.Pages
             using (var unitOfWork = new UnitOfWork())
             {
                 School.ItemsSource = unitOfWork.SRs.Items;
-                unitOfWork.Complete();
             }
         }
 
-        private void Clear_Click(object sender, RoutedEventArgs e)
-        {
-            Tutors.ItemsSource = null;
-            School.SelectedItem = null;
-            Date.SelectedDate = null;
-            DGShowSchedule.ItemsSource = null;
-        }
 
         private void Return_Click(object sender, RoutedEventArgs e)
         {
@@ -52,31 +44,22 @@ namespace ScheduleManagement.GUI.Pages
             {
                 unitOfWork.SRs.Message += ShowMessage;
                 var sch = School.SelectedItem as School;
-                var schid = sch?.ID;
                 var tut = Tutors.SelectedItem as Tutor;
-                var tutid = tut?.ID;
-                var date = Date.SelectedDate;
-                if (unitOfWork.SRs.CheckData(date, schid, tutid))
+                if (unitOfWork.SRs.CheckData(Date.SelectedDate, sch?.ID, tut?.ID))
                 {
-                    DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(date, tutid);
+                    DGShowSchedule.ItemsSource =  unitOfWork.TCRs.FormSchedule(Date.SelectedDate, tut?.ID);
                     if (DGShowSchedule.Items.Count == 0)
-                    {
-                        MessageBox.Show("У данного преподавателя нет уроков на это число");
-                    }
+                    MessageBox.Show("У данного преподавателя нет уроков на это число");
                 }
-                unitOfWork.Complete();
             }
         }
 
         private void School_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {    if (School.SelectedItem is School)
+        {    if (School.SelectedItem is School school)
             {
                 using (var unitOfWork = new UnitOfWork())
                 {
-                    var sch = School.SelectedItem as School;
-                    var schid = sch.ID;
-                    Tutors.ItemsSource = unitOfWork.SRs.FormTutors(schid);
-                    unitOfWork.Complete();
+                    Tutors.ItemsSource = unitOfWork.SRs.FormTutors(school.ID);
                 }
             }
         }
@@ -85,5 +68,13 @@ namespace ScheduleManagement.GUI.Pages
         {
             MessageBox.Show(message);
         }
+        private void Clear_Click(object sender, RoutedEventArgs e)
+        {
+            Tutors.ItemsSource = null;
+            School.SelectedItem = null;
+            Date.SelectedDate = null;
+            DGShowSchedule.ItemsSource = null;
+        }
+
     }
 }

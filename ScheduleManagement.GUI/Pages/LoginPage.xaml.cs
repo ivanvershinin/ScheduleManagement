@@ -34,11 +34,7 @@ namespace ScheduleManagement.GUI.Pages
             {
                 unitOfWork.TRs.Message += ShowMessage;
                 if (unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password))
-                {
-                    Storage.Default.CurrentID = unitOfWork.TRs.SaveLogin(TBEmail.Text);
                     NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
-                }
-                unitOfWork.Complete();
             }
         }
 

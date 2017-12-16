@@ -31,24 +31,18 @@ namespace ScheduleManagement.GUI.Pages
 
         private void Bind_Click(object sender, RoutedEventArgs e)
         {
-            using (var unitOfWork = new UnitOfWork())
+            if (DGShow.SelectedItem is Cabinet SelectedCabinet)
             {
-                unitOfWork.TCRs.Message += MessageShow;
-                if (DGShow.SelectedItem is Cabinet SelectedCabinet)
+                using (var unitOfWork = new UnitOfWork())
                 {
-                    var idcabinet = SelectedCabinet.ID;
-                    var iduser = Storage.Default.CurrentID;
-                    var datechosen = Storage.Default.DateChosen;
-                    var lessonorder = Storage.Default.LessonChosen;
-                    if (!(unitOfWork.TCRs.CheckLesson(lessonorder, datechosen, iduser)))
-                    {
-                        unitOfWork.TCRs.BindLesson(idcabinet, iduser, datechosen, lessonorder);
-                    }
-                    else { MessageBox.Show("Вы уже выбрали " + lessonorder + " урок на эту дату"); };
+                   unitOfWork.TCRs.Message += MessageShow;
+                   unitOfWork.TCRs.CheckBindCabinet(SelectedCabinet.ID, Storage.Default.CurrentID, Storage.Default.DateChosen, Storage.Default.LessonChosen);
                 }
-                else { MessageBox.Show("Выберите кабинет"); };
+
                 RefreshList();
             }
+            else { MessageBox.Show("Выберите кабинет"); };
+
         }
 
         private void ReturnToAccount_Click(object sender, RoutedEventArgs e)
@@ -61,13 +55,10 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
-                var lessonord = Storage.Default.LessonChosen;
-                var datechosen = Storage.Default.DateChosen;
-                var schoolchosen = Storage.Default.SchoolNumber;
-                var studentsam = Storage.Default.StudentAmount;
-                var computers = Storage.Default.CompNeed;
-                var board = Storage.Default.BoardNeed;
-                DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(schoolchosen, lessonord, datechosen, studentsam, computers, board);
+                DGShow.ItemsSource = unitOfWork.TCRs.FindCabinets(Storage.Default.SchoolNumber, Storage.Default.LessonChosen, Storage.Default.DateChosen, Storage.Default.StudentAmount, Storage.Default.CompNeed, Storage.Default.BoardNeed);
+                if (DGShow.Items.Count == 0)
+                    MessageBox.Show("Кабинетов, удовлетворящих Вашим условиям, нет.");
+
             }
         }
 

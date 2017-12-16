@@ -29,8 +29,22 @@ namespace ScheduleManagement.Logic.Repository
 
         public bool CheckLesson(int lesson, DateTime date, int tutor)
         {
-            var r = _context.TutorCabinets.Any(t => t.Date == date.Date && t.LessonOrder == lesson && t.TutorId == tutor);
-            return r;
+            return _context.TutorCabinets.Any(t => t.Date == date.Date && t.LessonOrder == lesson && t.TutorId == tutor);
+        }
+
+
+        public void CheckBindCabinet (int idcab, int idtut, DateTime date, int lessonord)
+        {
+            if (!(CheckLesson(lessonord, date, idtut)))
+              {
+              BindLesson(idcab, idtut, date, lessonord);
+              }
+            else
+            {
+                Message?.Invoke("Вы уже выбрали " + lessonord + " урок на эту дату");
+            };
+
+
         }
 
         public bool CheckData(string amount, DateTime? date, int? schoolNumber, int? lesson)

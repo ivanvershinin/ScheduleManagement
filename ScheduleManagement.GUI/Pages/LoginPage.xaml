@@ -27,10 +27,10 @@
                 <TextBox Margin="10"  Name="TBEmail"  Grid.Row="1" MaxWidth="520" Height="30" FontSize="18"/>
                 <Label Margin="10, 0"  Grid.Row="2" FontSize="18" HorizontalAlignment="Center">Введите пароль:</Label>
                 <PasswordBox  Margin="10" Name="PBPassword"  Grid.Row="3" MaxWidth="520" Height="30"/>
-                <Button Margin="10" MaxWidth="520" Height="55" Content="Войти" FontSize="18" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4" Click="LogIn_Click"/>
+                <Button Style="{StaticResource MyButtonStyle}" Margin="10" MaxWidth="520" Height="55" Content="Войти" FontSize="18" Name="LogIn" Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5"  Grid.Row="4" Click="LogIn_Click"/>
             </Grid>
         </GroupBox>
-        <Button  Margin="10" Height="55"  MaxWidth="520" Content="Вернуться" Name="Return"  FontSize="18" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click"/>
+        <Button Style="{StaticResource MyButtonStyle}"  Margin="10" Height="55"  MaxWidth="520" Content="Вернуться" Name="Return"  FontSize="18" Grid.Row="2" Background="#FF3C4A58" BorderBrush="#FF3C4A58" Foreground="White" Click="Return_Click"/>
 
     </Grid>
 </Page>

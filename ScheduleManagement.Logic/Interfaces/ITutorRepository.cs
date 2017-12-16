@@ -12,12 +12,16 @@ namespace ScheduleManagement.Logic.Interfaces
         void AddTutor(Tutor tutor);
 
         bool CheckRegistration(string name, string surname, string email, string password);
+        void Register(string name, string surname, string email, string password);
 
         bool CheckLogin(string email, string password);
+        int SaveLogin(string email);
 
         bool EmailExists(string email);
 
         bool PasswordIsValid(string email, string password);
+
+       
 
     }
 }

@@ -19,9 +19,10 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <Label FontSize="28" HorizontalAlignment="Center" Margin="15" >Добро пожаловать!</Label>
-        <Button Grid.Row="1" Margin="10" Content="Войти в систему" Name="Login" Click="Login_Click" MaxHeight="70" MaxWidth="560"  Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24"/>
-        <Button Grid.Row="2" Margin="15" Content="Просмотреть расписания" Name="View" Click="View_Click"  MaxHeight="70" MaxWidth="560"   Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24"/>
-        <Button Grid.Row="3" Margin="15" Content="Зарегистрироваться" Name="Registration" Click="Registration_Click" MaxHeight="70" MaxWidth="560"   Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24"/>
+        <Button Style="{StaticResource MyButtonStyle}" Grid.Row="1" Margin="10" Content="Войти в систему" Name="Login" Click="Login_Click" MaxHeight="70" MaxWidth="560"  Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24"/>
+        <Button Style="{StaticResource MyButtonStyle}" Grid.Row="2" Margin="15" Content="Просмотреть расписания" Name="View" Click="View_Click"  MaxHeight="70" MaxWidth="560"   Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24"/>
+        <Button Style="{StaticResource MyButtonStyle}" Grid.Row="3" Margin="15" Content="Зарегистрироваться" Name="Registration" Click="Registration_Click" MaxHeight="70" MaxWidth="560"   Background="#FF18AFE5" BorderBrush="#FF18AFE5" Foreground="#FFE6E6F5" FontSize="24">
+        </Button>
 
     </Grid>
 </Page>

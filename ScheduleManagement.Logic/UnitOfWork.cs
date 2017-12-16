@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScheduleManagement.Logic.Repository;
+using ScheduleManagement.Logic.Interfaces;
 
 namespace ScheduleManagement.Logic
 {
