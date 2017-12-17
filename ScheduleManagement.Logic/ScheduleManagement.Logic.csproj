@@ -52,8 +52,6 @@
   <ItemGroup>
     <Compile Include="Authorization.cs" />
     <Compile Include="Context.cs" />
-    <Compile Include="Interfaces\ICabinetRepository.cs" />
-    <Compile Include="Interfaces\ITutorRepository.cs" />
     <Compile Include="Migrations\201712171554004_InitialCreate.cs" />
     <Compile Include="Migrations\201712171554004_InitialCreate.Designer.cs">
       <DependentUpon>201712171554004_InitialCreate.cs</DependentUpon>

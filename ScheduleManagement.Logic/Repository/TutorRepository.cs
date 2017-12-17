@@ -4,12 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ScheduleManagement.Logic.Model;
-using ScheduleManagement.Logic.Interfaces;
+
 
 namespace ScheduleManagement.Logic.Repository
 {
 
-    public class TutorRepository : Repository<Tutor>, ITutorRepository
+    public class TutorRepository : Repository<Tutor>
     {
         public event Action<string> Message;
 

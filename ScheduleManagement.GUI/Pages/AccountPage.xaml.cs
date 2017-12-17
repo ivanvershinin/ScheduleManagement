@@ -25,14 +25,13 @@ namespace ScheduleManagement.GUI.Pages
     {
         public AccountPage()
         {
-            List<int> lessons = new List<int> { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 }; //АСТАРОЖЖЖНА ТВЕРДЫЙ КОД
             InitializeComponent();
             using (var unitOfWork = new UnitOfWork())
             {
                 CMBSchool.ItemsSource = unitOfWork.SRs.Items;
                 unitOfWork.Complete();
             }
-            CMBLesson.ItemsSource = lessons;
+            CMBLesson.ItemsSource = Storage.Default.lessons;
         }
 
         School school;
