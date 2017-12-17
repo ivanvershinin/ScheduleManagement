@@ -54,9 +54,9 @@
     <Compile Include="Context.cs" />
     <Compile Include="Interfaces\ICabinetRepository.cs" />
     <Compile Include="Interfaces\ITutorRepository.cs" />
-    <Compile Include="Migrations\201712111505419_InitialCreate.cs" />
-    <Compile Include="Migrations\201712111505419_InitialCreate.Designer.cs">
-      <DependentUpon>201712111505419_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201712171554004_InitialCreate.cs" />
+    <Compile Include="Migrations\201712171554004_InitialCreate.Designer.cs">
+      <DependentUpon>201712171554004_InitialCreate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Model\Cabinet.cs" />
@@ -77,8 +77,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712111505419_InitialCreate.resx">
-      <DependentUpon>201712111505419_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712171554004_InitialCreate.resx">
+      <DependentUpon>201712171554004_InitialCreate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

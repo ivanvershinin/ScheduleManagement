@@ -16,7 +16,7 @@ namespace ScheduleManagement.Logic
         public DbSet<TutorCabinet> TutorCabinets { get; set; }
 
 
-        public Context() : base("MSDb3")
+        public Context() : base("MSDbFinal")
         {
 
         }
