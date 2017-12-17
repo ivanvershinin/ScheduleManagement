@@ -25,6 +25,7 @@ namespace ScheduleManagement.GUI
 
         public MainWindow()
         {
+            WindowStartupLocation = WindowStartupLocation.CenterScreen;
             InitializeComponent();
             Frame.Navigate(PagesStorage.Default.GetStartingPage());           
         }
