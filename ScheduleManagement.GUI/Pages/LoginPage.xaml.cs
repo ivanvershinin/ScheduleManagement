@@ -32,6 +32,7 @@ namespace ScheduleManagement.GUI.Pages
         {
             using (var unitOfWork = new UnitOfWork())
             {
+                unitOfWork.CRs.Message += ShowMessage;
                 unitOfWork.TRs.Message += ShowMessage;
                 if (unitOfWork.TRs.CheckLogin(TBEmail.Text, PBPassword.Password))
                     NavigationService.Navigate(PagesStorage.Default.GetAccountPage());
@@ -41,7 +42,6 @@ namespace ScheduleManagement.GUI.Pages
         private void Return_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(PagesStorage.Default.GetStartingPage());
-            //конец
         }
 
         public void ShowMessage(string message)

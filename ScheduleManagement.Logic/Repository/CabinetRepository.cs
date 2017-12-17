@@ -9,9 +9,14 @@ namespace ScheduleManagement.Logic.Repository
 {
     public class CabinetRepository : Repository<Cabinet>
     {
+        public event Action<string> Message;
+
         public CabinetRepository(Context context) : base(context)
         {
-            Items = context.Cabinets.ToList();
+            try
+            {
+                Items = context.Cabinets.ToList();
+            } catch { Message?.Invoke("Время ожидания подключения истекло"); }
         }
     }
 }
